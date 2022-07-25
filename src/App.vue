@@ -7,26 +7,24 @@
 
     <main-menu />
 
-    <v-main>
-      <router-view />
-    </v-main>
+    <router-view />
   </v-app>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 
-import MainMenu from '@/components/menus/MainMenu.vue';
+import MainMenu from "@/components/menus/MainMenu.vue";
 
 @Component({
   components: {
-    MainMenu
-  }
+    MainMenu,
+  },
 })
 export default class App extends Vue {
   /* METHODS */
   toggleMenu(): void {
-    this.$store.dispatch('toggleMenu');
+    this.$store.dispatch("toggleMenu");
   }
 }
 </script>

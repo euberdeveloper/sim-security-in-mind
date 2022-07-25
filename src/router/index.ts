@@ -1,14 +1,37 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import HomeView from '@/views/HomeView.vue';
+
+import MangleTypeView from '@/views/MangleTypeView.vue';
+import MangleClassIdentifierView from '@/views/MangleClassIdentifierView.vue';
+import MangleClassMethodView from '@/views/MangleClassMethodView.vue';
+import MangleClassConstructorView from '@/views/MangleClassConstructorView.vue';
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    redirect: '/mangle-type'
+  },
+  {
+    path: '/mangle-type',
+    name: 'mangle-type',
+    component: MangleTypeView
+  },
+  {
+    path: '/mangle-class-identifier',
+    name: 'mangle-class-identifier',
+    component: MangleClassIdentifierView
+  },
+  {
+    path: '/mangle-class-method',
+    name: 'mangle-class-method',
+    component: MangleClassMethodView
+  },
+  {
+    path: '/mangle-class-constructor',
+    name: 'mangle-class-constructor',
+    component: MangleClassConstructorView
   }
 ];
 
