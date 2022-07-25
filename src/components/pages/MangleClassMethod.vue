@@ -1,16 +1,26 @@
 <template>
   <section-card title="Mangle class method">
     <v-card-text class="mt-4 mx-2">
-      <v-text-field v-model="classMethod" type="text" label="Class method" outlined dense />
+      <v-text-field v-model="classMethodSignature" type="text" label="Class method" outlined dense />
       <v-text-field
-        :value="mangledClassMethod"
+        :value="mangledClassMethodSignature"
         type="text"
-        label="Mangled"
+        label="Mangled signature"
         outlined
         dense
         readonly
         append-icon="mdi-content-copy"
-        @click:append="copyText(mangledClassMethod)"
+        @click:append="copyText(mangledClassMethodSignature)"
+      />
+      <v-textarea
+        :value="mangledClassMethodDefinition"
+        type="text"
+        label="Mangled definition"
+        outlined
+        dense
+        readonly
+        append-icon="mdi-content-copy"
+        @click:append="copyText(mangledClassMethodDefinition)"
       />
     </v-card-text>
   </section-card>
@@ -18,7 +28,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { mangleMethod } from "lifeware-java-mangler";
+import { mangleMethodSignature, mangleMethodDefinition } from "lifeware-java-mangler";
 import clipboardCopy from "clipboard-copy";
 
 import SectionCard from "@/components/gears/SectionCard.vue";
@@ -31,13 +41,21 @@ import SectionCard from "@/components/gears/SectionCard.vue";
 export default class MangleClassMethod extends Vue {
   /* DATA */
 
-  private classMethod = "";
+  private classMethodSignature = "";
 
   /* GETTERS */
 
-  get mangledClassMethod(): string {
+  get mangledClassMethodSignature(): string {
     try {
-      return mangleMethod(this.classMethod);
+      return mangleMethodSignature(this.classMethodSignature);
+    } catch (error) {
+      return "";
+    }
+  }
+
+  get mangledClassMethodDefinition(): string {
+    try {
+      return mangleMethodDefinition(this.classMethodSignature);
     } catch (error) {
       return "";
     }

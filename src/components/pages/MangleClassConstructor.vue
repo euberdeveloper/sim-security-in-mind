@@ -1,16 +1,26 @@
 <template>
   <section-card title="Mangle class constructor">
     <v-card-text class="mt-4 mx-2">
-      <v-text-field v-model="classConstructor" type="text" label="Class constructor" outlined dense />
+      <v-text-field v-model="classConstructorSignature" type="text" label="Class constructor" outlined dense />
       <v-text-field
-        :value="mangledClassConstructor"
+        :value="mangledClassSignature"
         type="text"
-        label="Mangled"
+        label="Mangled signature"
         outlined
         dense
         readonly
         append-icon="mdi-content-copy"
-        @click:append="copyText(mangledClassConstructor)"
+        @click:append="copyText(mangledClassSignature)"
+      />
+      <v-textarea
+        :value="mangledClassDefinition"
+        type="text"
+        label="Mangled definition"
+        outlined
+        dense
+        readonly
+        append-icon="mdi-content-copy"
+        @click:append="copyText(mangledClassDefinition)"
       />
     </v-card-text>
   </section-card>
@@ -18,7 +28,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { mangleConstructor } from "lifeware-java-mangler";
+import { mangleConstructorDefinition, mangleConstructorSignature } from "lifeware-java-mangler";
 import clipboardCopy from "clipboard-copy";
 
 import SectionCard from "@/components/gears/SectionCard.vue";
@@ -31,13 +41,21 @@ import SectionCard from "@/components/gears/SectionCard.vue";
 export default class MangleClassConstructor extends Vue {
   /* DATA */
 
-  private classConstructor = "";
+  private classConstructorSignature = "";
 
   /* GETTERS */
 
-  get mangledClassConstructor(): string {
+  get mangledClassSignature(): string {
     try {
-      return mangleConstructor(this.classConstructor);
+      return mangleConstructorSignature(this.classConstructorSignature);
+    } catch (error) {
+      return "";
+    }
+  }
+
+  get mangledClassDefinition(): string {
+    try {
+      return mangleConstructorDefinition(this.classConstructorSignature);
     } catch (error) {
       return "";
     }

@@ -23,12 +23,12 @@ export default class MainMenu extends Vue {
     },
     {
       icon: "mdi-alpha-m-circle",
-      text: "Mangle class method",
+      text: "Mangle method",
       path: "/mangle-class-method",
     },
     {
       icon: "mdi-alpha-c-circle",
-      text: "Mangle class constructor",
+      text: "Mangle constructor",
       path: "/mangle-class-constructor",
     },
     {
