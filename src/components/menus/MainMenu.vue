@@ -17,22 +17,22 @@ export default class MainMenu extends Vue {
 
   private items: MenuItem[] = [
     {
-      icon: "mdi-bed",
+      icon: "mdi-alpha-i-circle",
       text: "Mangle class identifier",
       path: "/mangle-class-identifier",
     },
     {
-      icon: "mdi-bed",
+      icon: "mdi-alpha-m-circle",
       text: "Mangle class method",
       path: "/mangle-class-method",
     },
     {
-      icon: "mdi-bed",
+      icon: "mdi-alpha-c-circle",
       text: "Mangle class constructor",
       path: "/mangle-class-constructor",
     },
     {
-      icon: "mdi-bed",
+      icon: "mdi-alpha-t-circle",
       text: "Mangle type",
       path: "/mangle-type",
     },
