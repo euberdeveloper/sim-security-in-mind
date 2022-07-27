@@ -10,7 +10,7 @@
         dense
         readonly
         append-icon="mdi-content-copy"
-        @click:append="copyText(mangledType)"
+        @click:append="copyText(mangledTypeShown)"
         v-if="mangledTypeShown"
       />
     </v-card-text>
