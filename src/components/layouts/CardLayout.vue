@@ -5,7 +5,7 @@ defineProps<{
 </script>
 
 <template>
-  <v-container fluid fill-height>
+  <v-container class="fill-height" fluid >
     <v-row align="center" justify="center">
       <v-col cols="12" sm="10">
         <v-fade-transition hide-on-leave>
