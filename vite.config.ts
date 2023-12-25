@@ -9,7 +9,7 @@ export default defineConfig({
     vue(),
   ],
   define: {
-    '__APP_VERSION__': JSON.stringify(process.env.npm_package_version),
+    '__APP_VERSION__': JSON.stringify(process.env.npm_package_version)
   },
   resolve: {
     alias: {

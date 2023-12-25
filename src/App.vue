@@ -3,6 +3,11 @@ import { RouterView } from 'vue-router';
 
 import MainBar from '@/components/bars/MainBar.vue';
 import MainMenu from '@/components/menus/MainMenu.vue';
+
+import { syncThemeStoreWithLocalStorage } from '@/stores/theme';
+import config from '@/config';
+
+syncThemeStoreWithLocalStorage(`${config.localStoragePrefix}_theme`);
 </script>
 
 <template>
@@ -17,5 +22,6 @@ import MainMenu from '@/components/menus/MainMenu.vue';
 
 <style>
 html {
-  overflow-y: auto
-}</style>
+  overflow-y: auto;
+}
+</style>
