@@ -29,7 +29,6 @@ const shownItems = computed<MenuItem[]>(() => {
 </script>
 
 <template>
-    <!-- TODO: :clipped="$vuetify.breakpoint.lgAndUp" -->
     <v-navigation-drawer v-model="showMenu">
         <v-text-field class="mx-2 my-5" type="text" filled rounded density="compact" hide-details variant="outlined"
             label="Cerca" name="search" v-model="search" clearable />
