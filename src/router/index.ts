@@ -14,22 +14,34 @@ const router = createRouter({
     {
       path: '/mangle-type',
       name: 'mangle-type',
-      component: MangleTypeView
+      component: MangleTypeView,
+      meta: {
+        title: 'Mangle Type'
+      }
     },
     {
       path: '/mangle-class-identifier',
       name: 'mangle-class-identifier',
-      component: MangleClassIdentifierView
+      component: MangleClassIdentifierView,
+      meta: {
+        title: 'Mangle Class Identifier'
+      }
     },
     {
       path: '/mangle-class-method',
       name: 'mangle-class-method',
-      component: MangleClassMethodView
+      component: MangleClassMethodView,
+      meta: {
+        title: 'Mangle Class Method'
+      }
     },
     {
       path: '/mangle-class-constructor',
       name: 'mangle-class-constructor',
-      component: MangleClassConstructorView
+      component: MangleClassConstructorView,
+      meta: {
+        title: 'Mangle Class Constructor'
+      }
     }
   ]
 });

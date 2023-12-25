@@ -10,7 +10,7 @@ const { toggleTheme } = themeStore;
 </script>
 
 <template>
-  <v-app-bar color="primary" clipped-left dark app>
+  <v-app-bar color="primary">
     <template v-slot:prepend>
       <v-app-bar-nav-icon @click="toggleMenu"></v-app-bar-nav-icon>
     </template>
