@@ -16,6 +16,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "clipboardy": "^4.0.0",
     "lifeware-java-mangler": "^1.0.14",
     "pinia": "^2.1.7",
     "vue": "^3.3.11",
