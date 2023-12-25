@@ -1,6 +1,7 @@
 import { computed, ref, watchEffect } from 'vue';
 import { defineStore } from 'pinia';
 import { useTheme } from 'vuetify';
+import { VFadeTransition, VScaleTransition, VExpandTransition, VSlideXTransition, VSlideYTransition } from 'vuetify/components';
 
 export const useThemeStore = defineStore('theme', () => {
   const theme = useTheme();
@@ -13,8 +14,30 @@ export const useThemeStore = defineStore('theme', () => {
   function toggleTheme() {
     isDark.value = !isDark.value;
   }
+  const darkComponents = { isDark, currentTheme, applyTheme, toggleTheme };
 
-  return { isDark, currentTheme, applyTheme, toggleTheme };
+  const transitionMapping = {
+    VFadeTransition,
+    VScaleTransition,
+    VExpandTransition,
+    VSlideXTransition,
+    VSlideYTransition
+  };
+  type TransitionType = keyof typeof transitionMapping;
+  const transitionNames = ref<Record<TransitionType, string>>({
+    VFadeTransition: 'Fade',
+    VScaleTransition: 'Scale',
+    VExpandTransition: 'Expand',
+    VSlideXTransition: 'Slide X',
+    VSlideYTransition: 'Slide Y'
+  });
+  const routeTransition = ref<TransitionType>('VFadeTransition');
+  function setRouteTransition(transition: TransitionType) {
+    routeTransition.value = transition;
+  }
+  const transitionComponents = { routeTransition, transitionNames, setRouteTransition };
+
+  return { ...darkComponents, ...transitionComponents };
 });
 
 export function syncThemeStoreWithLocalStorage(localStorageKey: string) {

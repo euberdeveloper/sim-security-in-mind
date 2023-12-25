@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import { useThemeStore } from '@/stores/theme';
+import { storeToRefs } from 'pinia';
+
+const {routeTransition} = storeToRefs(useThemeStore());
+
 defineProps<{
   title: string;
 }>();
@@ -8,7 +13,7 @@ defineProps<{
   <v-container class="fill-height" fluid >
     <v-row align="center" justify="center">
       <v-col cols="12" sm="10">
-        <v-fade-transition hide-on-leave>
+        <component :is="routeTransition" hide-on-leave>
 
           <v-card :key="title">
             <v-toolbar color="primary" dark>
@@ -18,7 +23,7 @@ defineProps<{
             <slot></slot>
           </v-card>
 
-        </v-fade-transition>
+        </component>
       </v-col>
     </v-row>
   </v-container>
