@@ -1,7 +1,13 @@
 import { computed, ref, watchEffect } from 'vue';
 import { defineStore } from 'pinia';
 import { useTheme } from 'vuetify';
-import { VFadeTransition, VScaleTransition, VExpandTransition, VSlideXTransition, VSlideYTransition } from 'vuetify/components';
+import {
+  VFadeTransition,
+  VScaleTransition,
+  VExpandTransition,
+  VSlideXTransition,
+  VSlideYTransition
+} from 'vuetify/components';
 
 export const useThemeStore = defineStore('theme', () => {
   const theme = useTheme();

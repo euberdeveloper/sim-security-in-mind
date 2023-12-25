@@ -14,7 +14,7 @@ syncThemeStoreWithLocalStorage(`${config.localStoragePrefix}_theme`);
 const route = useRoute();
 const title = computed(() => {
   return route.meta.title ?? '';
-})
+});
 </script>
 
 <template>
