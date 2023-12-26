@@ -8,11 +8,11 @@ defineProps<{
 
 <template>
   <v-dialog :width="width" :fullscreen="fullscreen" scrollable>
-    <template v-slot:activator="{ props }">
+    <template #activator="{ props }">
       <slot name="activator" v-bind="{ props }"></slot>
     </template>
 
-    <template v-slot:default="{ isActive }">
+    <template #default="{ isActive }">
       <v-card>
         <v-toolbar color="primary" dark>
           <v-toolbar-title class="text-center font-weight-bold">{{ title }}</v-toolbar-title>

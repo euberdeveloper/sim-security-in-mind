@@ -9,9 +9,9 @@ const { setRouteTransition } = themeStore;
 
 <template>
   <v-menu>
-    <template v-slot:activator="{ props: menuProps }">
+    <template #activator="{ props: menuProps }">
       <v-tooltip text="Transizioni" location="bottom">
-        <template v-slot:activator="{ props: tooltipProps }">
+        <template #activator="{ props: tooltipProps }">
           <v-btn v-bind="{ ...menuProps, ...tooltipProps }" icon="mdi-transition" />
         </template>
       </v-tooltip>

@@ -15,7 +15,12 @@ const dialogWIdth = computed(() => (isMobile.value ? 'auto' : 650));
 </script>
 
 <template>
-  <CardDialog title="Informazioni pagina" :width="dialogWIdth" :fullscreen="isMobile" v-if="showInfoButton">
+  <CardDialog
+    title="Informazioni pagina"
+    :width="dialogWIdth"
+    :fullscreen="isMobile"
+    v-if="showInfoButton"
+  >
     <template #activator="{ props: dialogProps }">
       <v-tooltip text="Info pagina" location="bottom">
         <template #activator="{ props: tooltipProps }">

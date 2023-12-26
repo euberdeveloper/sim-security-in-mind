@@ -8,7 +8,7 @@ const { showSnackbar, snackbarText, snackbarColor } = storeToRefs(useNotificatio
 <template>
   <v-snackbar :color="snackbarColor" v-model="showSnackbar">
     {{ snackbarText }}
-    <template v-slot:actions>
+    <template #actions>
       <v-btn variant="text" @click="showSnackbar = false">Close</v-btn>
     </template>
   </v-snackbar>

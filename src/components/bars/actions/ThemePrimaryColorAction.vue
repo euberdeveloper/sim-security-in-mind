@@ -22,7 +22,7 @@ const paletteMenuOpen = ref(false);
     :open-on-hover="!isMobile"
     :close-on-content-click="false"
   >
-    <template v-slot:activator="{ props }">
+    <template #activator="{ props }">
       <v-btn
         v-bind="{ ...props }"
         icon="mdi-format-color-fill"
