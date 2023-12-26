@@ -16,11 +16,10 @@ const paletteMenuOpen = ref(false);
 </script>
 
 <template>
-  <v-menu v-model="paletteMenuOpen" location="start bottom" :open-on-hover="!isMobile" :close-on-content-click="false"
-    class="rounded-pill">
+  <v-menu v-model="paletteMenuOpen" location="start bottom" :open-on-hover="!isMobile" :close-on-content-click="false">
     <template v-slot:activator="{ props }">
       <v-btn v-bind="{ ...props, }" icon="mdi-format-color-fill" @click="!isMobile && randomPrimaryColor()" />
     </template>
-    <v-color-picker class="mt-4" style="overflow-x: hidden" v-model="primaryColor" elevation="15" />
+    <v-color-picker class="mt-4 rounded-xl" style="overflow-x: hidden" v-model="primaryColor" elevation="15" />
   </v-menu>
 </template>
