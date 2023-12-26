@@ -2,6 +2,7 @@
 import { useMenuStore } from '@/stores/menu';
 import { useThemeStore } from '@/stores/theme';
 import { storeToRefs } from 'pinia';
+import { ref } from 'vue';
 
 const menuStore = useMenuStore();
 const { toggleMenu } = menuStore;
@@ -9,6 +10,9 @@ const { toggleMenu } = menuStore;
 const themeStore = useThemeStore();
 const { routeTransition, transitionNames } = storeToRefs(themeStore);
 const { toggleTheme, setRouteTransition } = themeStore;
+
+const paletteMenuOpen = ref(false);
+const primaryColour = ref('');
 </script>
 
 <template>
@@ -20,11 +24,12 @@ const { toggleTheme, setRouteTransition } = themeStore;
     <v-app-bar-title>Lifeware Java Mangler</v-app-bar-title>
 
     <template v-slot:append>
-      <v-tooltip text="Cambia tema" location="bottom">
+      <v-menu v-model="paletteMenuOpen" location="start bottom" open-on-hover :close-on-content-click="false" class="rounded-pill">
         <template v-slot:activator="{ props }">
-          <v-btn v-bind="props" icon="mdi-theme-light-dark" @click="toggleTheme" />
+          <v-btn v-bind="{ ...props, }" icon="mdi-format-color-fill" />
         </template>
-      </v-tooltip>
+        <v-color-picker class="mt-4" style="overflow-x: hidden" v-model="primaryColour" elevation="15" />
+      </v-menu>
 
       <v-menu>
         <template v-slot:activator="{ props: menuProps }">
@@ -35,14 +40,11 @@ const { toggleTheme, setRouteTransition } = themeStore;
           </v-tooltip>
         </template>
         <v-list>
-          <v-list-item
-            v-for="(name, transition) in transitionNames"
-            :key="transition"
-            @click="setRouteTransition(transition)"
-          >
+          <v-list-item v-for="(name, transition) in transitionNames" :key="transition"
+            @click="setRouteTransition(transition)">
             <v-list-item-title :class="{ 'font-weight-bold': routeTransition === transition }">{{
               name
-            }}</v-list-item-title>
+              }}</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
