@@ -1,5 +1,5 @@
-import { computed, ref, watchEffect } from 'vue';
-import { defineStore } from 'pinia';
+import { computed, ref, watchEffect, watch } from 'vue';
+import { defineStore, storeToRefs } from 'pinia';
 import { useTheme } from 'vuetify';
 import {
   VFadeTransition,
@@ -12,15 +12,21 @@ import {
 export const useThemeStore = defineStore('theme', () => {
   const theme = useTheme();
 
-  const isDark = ref(false);
-  const currentTheme = computed(() => (isDark.value ? 'dark' : 'light'));
+  const isDark = ref(theme.current.value.dark);
+  const themeColors = ref({ ...theme.current.value.colors });
+  const currentThemeName = computed(() => (isDark.value ? 'dark' : 'light'));
+  const primaryColor = computed({
+    get: () => themeColors.value.primary,
+    set: (value) => (themeColors.value.primary = value)
+  });
   function applyTheme() {
-    theme.global.name.value = isDark.value ? 'dark' : 'light';
+    theme.global.name.value = currentThemeName.value;
+    theme.themes.value[currentThemeName.value].colors = themeColors.value;
   }
-  function toggleTheme() {
+  function toggleDarkMode() {
     isDark.value = !isDark.value;
   }
-  const darkComponents = { isDark, currentTheme, applyTheme, toggleTheme };
+  const darkComponents = { isDark, currentThemeName, themeColors, primaryColor, toggleDarkMode, applyTheme };
 
   const transitionMapping = {
     VFadeTransition,
@@ -48,14 +54,18 @@ export const useThemeStore = defineStore('theme', () => {
 
 export function syncThemeStoreWithLocalStorage(localStorageKey: string) {
   const themeStore = useThemeStore();
+  const { isDark, themeColors } = storeToRefs(themeStore);
   const localTheme = localStorage.getItem(localStorageKey);
 
   if (localTheme) {
     themeStore.$patch(JSON.parse(localTheme));
+    themeStore.applyTheme();
   }
 
   watchEffect(() => {
     localStorage.setItem(localStorageKey, JSON.stringify(themeStore.$state));
+  });
+  watch([isDark, themeColors], () => {
     themeStore.applyTheme();
   });
 }
