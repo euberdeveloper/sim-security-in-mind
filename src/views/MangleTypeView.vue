@@ -1,34 +1,14 @@
 <script setup lang="ts">
-import { ref, computed, watchEffect } from 'vue';
 import { mangleType, validateType } from 'lifeware-java-mangler';
 import { storeToRefs } from 'pinia';
 
 import { useClipboard } from '@/compositions/clipboard';
+import { useMangling } from '@/compositions/mangler';
 import { useManglersStore } from '@/stores/manglers';
 
 const { copyToClipboard } = useClipboard();
 const { type } = storeToRefs(useManglersStore());
-const fallbackMangledType = ref<string | null>(null);
-
-const validType = computed<boolean>(() => {
-  return validateType(type.value);
-});
-const mangledType = computed<string | null>(() => {
-  return validType.value ? mangleType(type.value) : null;
-});
-const mangledTypeShown = computed<string | null>(() => {
-  return mangledType.value ?? fallbackMangledType.value;
-});
-
-function validationRule() {
-  return validType.value;
-}
-
-watchEffect(() => {
-  if (mangledType.value) {
-    fallbackMangledType.value = mangledType.value;
-  }
-});
+const { displayedMangled, mangledValidationRule } = useMangling(type, validateType, mangleType);
 </script>
 
 <template>
@@ -39,10 +19,10 @@ watchEffect(() => {
       label="Type"
       variant="outlined"
       density="compact"
-      :rules="[validationRule]"
+      :rules="[mangledValidationRule]"
     />
     <v-text-field
-      :value="mangledTypeShown"
+      :value="displayedMangled"
       type="text"
       label="Mangled type"
       variant="outlined"
@@ -50,8 +30,8 @@ watchEffect(() => {
       readonly
       persistent-placeholder
       append-inner-icon="mdi-content-copy"
-      @click:append-inner="copyToClipboard(mangledTypeShown)"
-      v-if="mangledTypeShown"
+      @click:append-inner="copyToClipboard(displayedMangled)"
+      v-if="displayedMangled"
     />
   </v-card-text>
 </template>

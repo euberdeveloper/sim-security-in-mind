@@ -6,10 +6,10 @@ const { showSnackbar, snackbarText, snackbarColor } = storeToRefs(useNotificatio
 </script>
 
 <template>
-	<v-snackbar :color="snackbarColor" v-model="showSnackbar">
-		{{ snackbarText }}
-		<template v-slot:actions>
-			<v-btn variant="text" @click="showSnackbar = false">Close</v-btn>
-		</template>
-	</v-snackbar>
+  <v-snackbar :color="snackbarColor" v-model="showSnackbar">
+    {{ snackbarText }}
+    <template v-slot:actions>
+      <v-btn variant="text" @click="showSnackbar = false">Close</v-btn>
+    </template>
+  </v-snackbar>
 </template>

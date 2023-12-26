@@ -7,7 +7,7 @@ import { syncThemeStoreWithLocalStorage } from '@/stores/theme';
 import MainBar from '@/components/bars/MainBar.vue';
 import MainMenu from '@/components/menus/MainMenu.vue';
 import CardLayout from '@/components/layouts/CardLayout.vue';
-import SnackbarNotifications from '@/components/gears/SnackbarNotifications.vue'
+import SnackbarNotifications from '@/components/gears/SnackbarNotifications.vue';
 
 import config from '@/config';
 
