@@ -1,4 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
+
+import {infoTextGuard} from '@/router/guards/infoText';
+
 import MangleTypeView from '@/views/MangleTypeView.vue';
 import MangleClassIdentifierView from '@/views/MangleClassIdentifierView.vue';
 import MangleClassMethodView from '@/views/MangleClassMethodView.vue';
@@ -16,7 +19,8 @@ const router = createRouter({
       name: 'mangle-type',
       component: MangleTypeView,
       meta: {
-        title: 'Mangle Type'
+        title: 'Mangle Type',
+        infoText: 'It mangles a type name'
       }
     },
     {
@@ -24,7 +28,8 @@ const router = createRouter({
       name: 'mangle-class-identifier',
       component: MangleClassIdentifierView,
       meta: {
-        title: 'Mangle Class Identifier'
+        title: 'Mangle Class Identifier',
+        infoText: 'It mangles a class identifier'
       }
     },
     {
@@ -32,7 +37,8 @@ const router = createRouter({
       name: 'mangle-class-method',
       component: MangleClassMethodView,
       meta: {
-        title: 'Mangle Class Method'
+        title: 'Mangle Class Method',
+        infoText: 'It mangles a class method'
       }
     },
     {
@@ -40,10 +46,13 @@ const router = createRouter({
       name: 'mangle-class-constructor',
       component: MangleClassConstructorView,
       meta: {
-        title: 'Mangle Class Constructor'
+        title: 'Mangle Class Constructor',
+        infoText: 'It mangles a class constructor'
       }
     }
   ]
 });
+
+router.beforeEach(infoTextGuard);
 
 export default router;

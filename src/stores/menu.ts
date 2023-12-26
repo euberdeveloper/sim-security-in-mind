@@ -1,4 +1,4 @@
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { defineStore } from 'pinia';
 
 export const useMenuStore = defineStore('menu', () => {
@@ -7,5 +7,9 @@ export const useMenuStore = defineStore('menu', () => {
     showMenu.value = !showMenu.value;
   }
 
-  return { showMenu, toggleMenu };
+  const infoText = ref<string | null>(null);
+  const showInfo = ref(false);
+  const showInfoButton = computed(() => !!infoText.value);
+
+  return { showMenu, toggleMenu, infoText, showInfo, showInfoButton };
 });
