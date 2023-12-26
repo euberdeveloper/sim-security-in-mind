@@ -37,6 +37,5 @@ defineProps<{
 .card-text {
   text-align: justify;
   font-size: 16px;
-  margin: 30px 0;
 }
 </style>
