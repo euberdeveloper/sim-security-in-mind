@@ -1,25 +1,53 @@
-<template>
-  <v-fade-transition hide-on-leave>
-    <v-main :key="$route.fullPath">
-      <v-container fluid fill-height>
-        <v-row align="center" justify="center">
-          <v-col cols="12" sm="10">
-            <mangle-class-constructor  />
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-main>
-  </v-fade-transition>
-</template>
+<script setup lang="ts">
+import { mangleConstructorDefinition, mangleConstructorSignature, validateConstructorSignature } from "lifeware-java-mangler";
+import { storeToRefs } from 'pinia';
 
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import MangleClassConstructor from "@/components/pages/MangleClassConstructor.vue";
+import { useClipboard } from '@/compositions/clipboard';
+import { useMangling, useManglingValidation } from '@/compositions/mangler';
+import { useManglersStore } from '@/stores/manglers';
 
-@Component({
-  components: {
-    MangleClassConstructor,
-  },
-})
-export default class MangleClassConstructorView extends Vue {}
+const { copyToClipboard } = useClipboard();
+const { classConstructor } = storeToRefs(useManglersStore());
+const { isInputValid, mangledValidationRule } = useManglingValidation(classConstructor, validateConstructorSignature);
+const { displayedMangled: displayedMangledConstructorSignature } = useMangling(classConstructor, isInputValid, mangleConstructorSignature);
+const { displayedMangled: displayedMangledConstructorDefinition } = useMangling(classConstructor, isInputValid, mangleConstructorDefinition);
 </script>
+
+<template>
+  <v-card-text class="mt-4 mx-2">
+    <v-text-field
+      v-model="classConstructor"
+      type="text"
+      label="Class constructor"
+      variant="outlined"
+      density="compact"
+      clearable
+      :rules="[mangledValidationRule]"
+    />
+    <v-text-field
+      :value="displayedMangledConstructorSignature"
+      type="text"
+      label="Mangled signature"
+      variant="outlined"
+      density="compact"
+      readonly
+      persistent-placeholder
+      append-inner-icon="mdi-content-copy"
+      @click:append-inner="copyToClipboard(displayedMangledConstructorSignature)"
+      v-if="displayedMangledConstructorSignature"
+    />
+    <v-textarea
+      :model-value="displayedMangledConstructorDefinition"
+      type="text"
+      label="Mangled definition"
+      variant="outlined"
+      density="compact"
+      readonly
+      auto-grow
+      persistent-placeholder
+      append-inner-icon="mdi-content-copy"
+      @click:append-inner="copyToClipboard(displayedMangledConstructorDefinition)"
+      v-if="displayedMangledConstructorDefinition"
+    />
+  </v-card-text>
+</template>

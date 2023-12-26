@@ -1,38 +1,41 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { RouterView, useRoute } from 'vue-router';
+
+import { syncThemeStoreWithLocalStorage } from '@/stores/theme';
+
+import MainBar from '@/components/bars/MainBar.vue';
+import MainMenu from '@/components/menus/MainMenu.vue';
+import CardLayout from '@/components/layouts/CardLayout.vue';
+import SnackbarNotifications from '@/components/gears/SnackbarNotifications.vue';
+
+import config from '@/config';
+
+syncThemeStoreWithLocalStorage(`${config.localStoragePrefix}_theme`);
+
+const route = useRoute();
+const title = computed(() => {
+  return route.meta.title ?? '';
+});
+</script>
+
 <template>
   <v-app id="app">
-    <v-app-bar color="primary" clipped-left dark app>
-      <v-app-bar-nav-icon @click.stop="toggleMenu"></v-app-bar-nav-icon>
-      <v-toolbar-title>Lifeware Java Mangler</v-toolbar-title>
-    </v-app-bar>
+    <MainBar />
+    <MainMenu />
 
-    <main-menu />
+    <v-main>
+      <CardLayout :title="title">
+        <RouterView />
+      </CardLayout>
+    </v-main>
 
-    <router-view />
+    <SnackbarNotifications />
   </v-app>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-
-import MainMenu from "@/components/menus/MainMenu.vue";
-
-@Component({
-  components: {
-    MainMenu,
-  },
-})
-export default class App extends Vue {
-  /* METHODS */
-  toggleMenu(): void {
-    this.$store.dispatch("toggleMenu");
-  }
-}
-</script>
-
-
-<style lang="scss">
+<style>
 html {
   overflow-y: auto;
 }
 </style>
-

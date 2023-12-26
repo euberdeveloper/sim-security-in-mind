@@ -1,25 +1,53 @@
-<template>
-  <v-fade-transition hide-on-leave>
-    <v-main :key="$route.fullPath">
-      <v-container fluid fill-height>
-        <v-row align="center" justify="center">
-          <v-col cols="12" sm="10">
-            <mangle-class-identifier />
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-main>
-  </v-fade-transition>
-</template>
+<script setup lang="ts">
+import { mangleClassDefinition, mangleClassIdentifier, validateClassIdentifier } from "lifeware-java-mangler";
+import { storeToRefs } from 'pinia';
 
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import MangleClassIdentifier from "@/components/pages/MangleClassIdentifier.vue";
+import { useClipboard } from '@/compositions/clipboard';
+import { useMangling, useManglingValidation } from '@/compositions/mangler';
+import { useManglersStore } from '@/stores/manglers';
 
-@Component({
-  components: {
-    MangleClassIdentifier,
-  },
-})
-export default class MangleClassIdentifierView extends Vue {}
+const { copyToClipboard } = useClipboard();
+const { classIdentifier } = storeToRefs(useManglersStore());
+const { isInputValid, mangledValidationRule } = useManglingValidation(classIdentifier, validateClassIdentifier);
+const { displayedMangled: displayedMangledClassIdentifier } = useMangling(classIdentifier, isInputValid, mangleClassIdentifier);
+const { displayedMangled: displayedMangledClassDefinition } = useMangling(classIdentifier, isInputValid, mangleClassDefinition);
 </script>
+
+<template>
+  <v-card-text class="mt-4 mx-2">
+    <v-text-field
+      v-model="classIdentifier"
+      type="text"
+      label="Class identifier"
+      variant="outlined"
+      density="compact"
+      clearable
+      :rules="[mangledValidationRule]"
+    />
+    <v-text-field
+      :value="displayedMangledClassIdentifier"
+      type="text"
+      label="Mangled identifier"
+      variant="outlined"
+      density="compact"
+      readonly
+      persistent-placeholder
+      append-inner-icon="mdi-content-copy"
+      @click:append-inner="copyToClipboard(displayedMangledClassIdentifier)"
+      v-if="displayedMangledClassIdentifier"
+    />
+    <v-textarea
+      :model-value="displayedMangledClassDefinition"
+      type="text"
+      label="Mangled definition"
+      variant="outlined"
+      density="compact"
+      readonly
+      auto-grow
+      persistent-placeholder
+      append-inner-icon="mdi-content-copy"
+      @click:append-inner="copyToClipboard(displayedMangledClassDefinition)"
+      v-if="displayedMangledClassDefinition"
+    />
+  </v-card-text>
+</template>

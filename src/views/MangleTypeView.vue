@@ -1,25 +1,39 @@
-<template>
-  <v-fade-transition hide-on-leave>
-    <v-main :key="$route.fullPath">
-      <v-container fluid fill-height>
-        <v-row align="center" justify="center">
-          <v-col cols="12" sm="10">
-            <mangle-type />
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-main>
-  </v-fade-transition>
-</template>
+<script setup lang="ts">
+import { mangleType, validateType } from 'lifeware-java-mangler';
+import { storeToRefs } from 'pinia';
 
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import MangleType from "@/components/pages/MangleType.vue";
+import { useClipboard } from '@/compositions/clipboard';
+import { useMangling, useManglingValidation } from '@/compositions/mangler';
+import { useManglersStore } from '@/stores/manglers';
 
-@Component({
-  components: {
-    MangleType,
-  },
-})
-export default class MangleTypeView extends Vue {}
+const { copyToClipboard } = useClipboard();
+const { type } = storeToRefs(useManglersStore());
+const { isInputValid, mangledValidationRule } = useManglingValidation(type, validateType);
+const { displayedMangled } = useMangling(type, isInputValid, mangleType);
 </script>
+
+<template>
+  <v-card-text class="mt-4 mx-2">
+    <v-text-field
+      v-model="type"
+      type="text"
+      label="Type"
+      variant="outlined"
+      density="compact"
+      clearable
+      :rules="[mangledValidationRule]"
+    />
+    <v-text-field
+      :value="displayedMangled"
+      type="text"
+      label="Mangled type"
+      variant="outlined"
+      density="compact"
+      readonly
+      persistent-placeholder
+      append-inner-icon="mdi-content-copy"
+      @click:append-inner="copyToClipboard(displayedMangled)"
+      v-if="displayedMangled"
+    />
+  </v-card-text>
+</template>

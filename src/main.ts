@@ -1,15 +1,15 @@
-import Vue from 'vue'
-import App from './App.vue'
-import './registerServiceWorker'
-import router from './router'
-import store from './store'
-import vuetify from './plugins/vuetify'
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 
-Vue.config.productionTip = false
+import vuetify from '@/plugins/vuetify';
 
-new Vue({
-  router,
-  store,
-  vuetify,
-  render: h => h(App)
-}).$mount('#app')
+import App from './App.vue';
+import router from './router';
+
+const app = createApp(App);
+
+app.use(createPinia());
+app.use(router);
+app.use(vuetify);
+
+app.mount('#app');
