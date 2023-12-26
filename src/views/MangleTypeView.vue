@@ -3,12 +3,13 @@ import { mangleType, validateType } from 'lifeware-java-mangler';
 import { storeToRefs } from 'pinia';
 
 import { useClipboard } from '@/compositions/clipboard';
-import { useMangling } from '@/compositions/mangler';
+import { useMangling, useManglingValidation } from '@/compositions/mangler';
 import { useManglersStore } from '@/stores/manglers';
 
 const { copyToClipboard } = useClipboard();
 const { type } = storeToRefs(useManglersStore());
-const { displayedMangled, mangledValidationRule } = useMangling(type, validateType, mangleType);
+const { isInputValid, mangledValidationRule } = useManglingValidation(type, validateType);
+const { displayedMangled } = useMangling(type, isInputValid, mangleType);
 </script>
 
 <template>
