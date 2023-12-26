@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { mangleMethodDefinition, mangleMethodSignature, validateMethodSignature } from "lifeware-java-mangler";
+import {
+  mangleMethodDefinition,
+  mangleMethodSignature,
+  validateMethodSignature
+} from 'lifeware-java-mangler';
 import { storeToRefs } from 'pinia';
 
 import { useClipboard } from '@/compositions/clipboard';
@@ -8,9 +12,20 @@ import { useManglersStore } from '@/stores/manglers';
 
 const { copyToClipboard } = useClipboard();
 const { classMethod } = storeToRefs(useManglersStore());
-const { isInputValid, mangledValidationRule } = useManglingValidation(classMethod, validateMethodSignature);
-const { displayedMangled: displayedMangledMethodSignature } = useMangling(classMethod, isInputValid, mangleMethodSignature);
-const { displayedMangled: displayedMangledMethodDefinition } = useMangling(classMethod, isInputValid, mangleMethodDefinition);
+const { isInputValid, mangledValidationRule } = useManglingValidation(
+  classMethod,
+  validateMethodSignature
+);
+const { displayedMangled: displayedMangledMethodSignature } = useMangling(
+  classMethod,
+  isInputValid,
+  mangleMethodSignature
+);
+const { displayedMangled: displayedMangledMethodDefinition } = useMangling(
+  classMethod,
+  isInputValid,
+  mangleMethodDefinition
+);
 </script>
 
 <template>

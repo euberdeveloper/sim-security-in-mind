@@ -33,8 +33,7 @@ export function useMangling(
   watchEffect(() => {
     if (mangled.value) {
       fallbackMangled.value = mangled.value;
-    }
-    else if (input.value === null) {
+    } else if (input.value === null) {
       fallbackMangled.value = null;
     }
   });
