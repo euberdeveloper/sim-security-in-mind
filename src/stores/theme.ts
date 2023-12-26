@@ -8,6 +8,7 @@ import {
   VSlideXTransition,
   VSlideYTransition
 } from 'vuetify/components';
+import { getRandomColor } from '@/utils/colors';
 
 export interface VuetifyThemeBaseColors {
     background: string;
@@ -47,13 +48,16 @@ export const useThemeStore = defineStore('theme', () => {
   function toggleDarkMode() {
     isDark.value = !isDark.value;
   }
+  function randomPrimaryColor() {
+    primaryColor.value = getRandomColor();
+  }
   function applyThemeDarkMode() {
     theme.global.name.value = currentThemeName.value;
   }
   function applyThemeColors() {
     theme.themes.value[currentThemeName.value].colors = themeColors.value;
   }
-  const paletteComponents = { isDark, currentThemeName, themes, themeColors, primaryColor, toggleDarkMode, applyThemeDarkMode, applyThemeColors};
+  const paletteComponents = { isDark, currentThemeName, themes, themeColors, primaryColor, toggleDarkMode, randomPrimaryColor, applyThemeDarkMode, applyThemeColors};
 
   const transitionMapping = {
     VFadeTransition,
