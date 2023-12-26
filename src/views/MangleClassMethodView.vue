@@ -43,6 +43,7 @@ const { displayedMangled: displayedMangledMethodDefinition } = useMangling(class
       variant="outlined"
       density="compact"
       readonly
+      auto-grow
       persistent-placeholder
       append-inner-icon="mdi-content-copy"
       @click:append-inner="copyToClipboard(displayedMangledMethodDefinition)"
