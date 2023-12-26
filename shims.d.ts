@@ -1,4 +1,5 @@
 import 'vue-router';
+import { MarkdownKey } from './types/markdown';
 
 // To ensure it is treated as a module, add at least one `export` statement
 export {}
@@ -6,7 +7,7 @@ export {}
 declare module 'vue-router' {
   interface RouteMeta {
     title: string;
-    info?: string;
+    info?: MarkdownKey;
   }
 }
 
