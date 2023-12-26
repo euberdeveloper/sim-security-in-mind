@@ -37,7 +37,7 @@ const { displayedMangled: displayedMangledMethodDefinition } = useMangling(class
       v-if="displayedMangledMethodSignature"
     />
     <v-textarea
-      :value="displayedMangledMethodDefinition"
+      :model-value="displayedMangledMethodDefinition"
       type="text"
       label="Mangled definition"
       variant="outlined"

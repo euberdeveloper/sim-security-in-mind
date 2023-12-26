@@ -37,12 +37,13 @@ const { displayedMangled: displayedMangledClassDefinition } = useMangling(classI
       v-if="displayedMangledClassIdentifier"
     />
     <v-textarea
-      :value="displayedMangledClassDefinition"
+      :model-value="displayedMangledClassDefinition"
       type="text"
       label="Mangled definition"
       variant="outlined"
       density="compact"
       readonly
+      auto-grow
       persistent-placeholder
       append-inner-icon="mdi-content-copy"
       @click:append-inner="copyToClipboard(displayedMangledClassDefinition)"
