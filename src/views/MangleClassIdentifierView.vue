@@ -21,6 +21,7 @@ const { displayedMangled: displayedMangledClassDefinition } = useMangling(classI
       label="Class identifier"
       variant="outlined"
       density="compact"
+      clearable
       :rules="[mangledValidationRule]"
     />
     <v-text-field

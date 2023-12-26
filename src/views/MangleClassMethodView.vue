@@ -21,6 +21,7 @@ const { displayedMangled: displayedMangledMethodDefinition } = useMangling(class
       label="Class method"
       variant="outlined"
       density="compact"
+      clearable
       :rules="[mangledValidationRule]"
     />
     <v-text-field

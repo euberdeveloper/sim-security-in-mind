@@ -21,6 +21,7 @@ const { displayedMangled: displayedMangledConstructorDefinition } = useMangling(
       label="Class constructor"
       variant="outlined"
       density="compact"
+      clearable
       :rules="[mangledValidationRule]"
     />
     <v-text-field

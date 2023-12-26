@@ -20,6 +20,7 @@ const { displayedMangled } = useMangling(type, isInputValid, mangleType);
       label="Type"
       variant="outlined"
       density="compact"
+      clearable
       :rules="[mangledValidationRule]"
     />
     <v-text-field
