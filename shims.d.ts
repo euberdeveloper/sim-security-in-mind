@@ -1,5 +1,5 @@
 import 'vue-router';
-import { MarkdownKey } from './types/markdown';
+import { type MarkdownKey } from '@/markdowns';
 
 // To ensure it is treated as a module, add at least one `export` statement
 export {}
