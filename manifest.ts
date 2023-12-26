@@ -10,6 +10,54 @@ export default {
     start_url: '/',
     description: 'A webapp to mangle Java code for Lifeware',
     icons: [
+        { 
+            src: 'icons/maskable/maskable_icon_x48.png',
+            sizes: '48x48',
+            type: 'image/png',
+            purpose: 'any maskable' 
+        },
+        {
+            src: 'icons/maskable/maskable_icon_x72.png',
+            sizes: '72x72',
+            type: 'image/png',
+            purpose: 'any maskable'
+        },
+        {
+            src: 'icons/maskable/maskable_icon_x96.png',
+            sizes: '96x96',
+            type: 'image/png',
+            purpose: 'any maskable'
+        },
+        {
+            src: 'icons/maskable/maskable_icon_x144.png',
+            sizes: '144x144',
+            type: 'image/png',
+            purpose: 'any maskable'
+        },
+        {
+            src: 'icons/maskable/maskable_icon_x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'any maskable'
+        },
+        {
+            src: 'icons/maskable/maskable_icon_x256.png',
+            sizes: '256x256',
+            type: 'image/png',
+            purpose: 'any maskable'
+        },
+        {
+            src: 'icons/maskable/maskable_icon_x384.png',
+            sizes: '384x384',
+            type: 'image/png',
+            purpose: 'any maskable'
+        },
+        {
+            src: 'icons/maskable/maskable_icon_x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any maskable'
+        },
       {
           'src': 'icons/windows11/SmallTile.scale-100.png',
           'sizes': '71x71'
