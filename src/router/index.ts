@@ -20,7 +20,7 @@ const router = createRouter({
       component: MangleTypeView,
       meta: {
         title: 'Mangle Type',
-        infoText: 'It mangles a type name'
+        infoText: `# Mangle Type`
       }
     },
     {

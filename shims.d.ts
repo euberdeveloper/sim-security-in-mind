@@ -9,3 +9,5 @@ declare module 'vue-router' {
     infoText?: string;
   }
 }
+
+declare module 'vue3-markdown-it';
