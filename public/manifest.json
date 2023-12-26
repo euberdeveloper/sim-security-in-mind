@@ -1,0 +1,10 @@
+{
+    "name": "Lifeware Java Mangler",
+    "short_name": "LwJavaMangle",
+    "theme_color": "#2196f3",
+    "background_color": "#2196f3",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "description": "A webapp to mangle Java code for Lifeware"
+}
