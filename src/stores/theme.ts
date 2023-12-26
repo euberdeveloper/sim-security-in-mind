@@ -11,24 +11,24 @@ import {
 import { getRandomColor } from '@/utils/colors';
 
 export interface VuetifyThemeBaseColors {
-    background: string;
-    surface: string;
-    primary: string;
-    secondary: string;
-    success: string;
-    warning: string;
-    error: string;
-    info: string;
+  background: string;
+  surface: string;
+  primary: string;
+  secondary: string;
+  success: string;
+  warning: string;
+  error: string;
+  info: string;
 }
 export interface VuetifyThemeOnColors {
-    'on-background': string;
-    'on-surface': string;
-    'on-primary': string;
-    'on-secondary': string;
-    'on-success': string;
-    'on-warning': string;
-    'on-error': string;
-    'on-info': string;
+  'on-background': string;
+  'on-surface': string;
+  'on-primary': string;
+  'on-secondary': string;
+  'on-success': string;
+  'on-warning': string;
+  'on-error': string;
+  'on-info': string;
 }
 export interface VuetifyThemeColors extends VuetifyThemeBaseColors, VuetifyThemeOnColors {
   [key: string]: string;
@@ -40,7 +40,9 @@ export const useThemeStore = defineStore('theme', () => {
   const isDark = ref(theme.current.value.dark);
   const currentThemeName = computed(() => (isDark.value ? 'dark' : 'light'));
   const themes = ref<Record<string, ThemeDefinition>>({ ...theme.themes.value });
-  const themeColors = computed<VuetifyThemeColors>(() => themes.value[currentThemeName.value].colors as VuetifyThemeColors);
+  const themeColors = computed<VuetifyThemeColors>(
+    () => themes.value[currentThemeName.value].colors as VuetifyThemeColors
+  );
   const primaryColor = computed({
     get: () => themeColors.value.primary,
     set: (value) => (themeColors.value.primary = value)
@@ -57,7 +59,17 @@ export const useThemeStore = defineStore('theme', () => {
   function applyThemeColors() {
     theme.themes.value[currentThemeName.value].colors = themeColors.value;
   }
-  const paletteComponents = { isDark, currentThemeName, themes, themeColors, primaryColor, toggleDarkMode, randomPrimaryColor, applyThemeDarkMode, applyThemeColors};
+  const paletteComponents = {
+    isDark,
+    currentThemeName,
+    themes,
+    themeColors,
+    primaryColor,
+    toggleDarkMode,
+    randomPrimaryColor,
+    applyThemeDarkMode,
+    applyThemeColors
+  };
 
   const transitionMapping = {
     VFadeTransition,

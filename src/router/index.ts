@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import {infoTextGuard} from '@/router/guards/infoText';
+import { infoTextGuard } from '@/router/guards/infoText';
 
 import MangleTypeView from '@/views/MangleTypeView.vue';
 import MangleClassIdentifierView from '@/views/MangleClassIdentifierView.vue';

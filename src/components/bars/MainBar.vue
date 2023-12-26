@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 import { useMenuStore } from '@/stores/menu';
 
 import DarkModeAction from './actions/DarkModeAction.vue';
