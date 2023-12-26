@@ -1,12 +1,13 @@
 <script setup lang="ts">
 defineProps<{
-  width: number;
+  width: number | string;
+  fullscreen?: boolean;
   title: string;
 }>();
 </script>
 
 <template>
-  <v-dialog :width="650" scrollable>
+  <v-dialog :width="width" :fullscreen="fullscreen" scrollable>
     <template v-slot:activator="{ props }">
       <slot name="activator" v-bind="{ props }"></slot>
     </template>
