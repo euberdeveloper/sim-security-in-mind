@@ -18,7 +18,7 @@ const { displayedMangled: displayedMangledClassDefinition } = useMangling(classI
     <v-text-field
       v-model="classIdentifier"
       type="text"
-      label="Type"
+      label="Class identifier"
       variant="outlined"
       density="compact"
       :rules="[mangledValidationRule]"
