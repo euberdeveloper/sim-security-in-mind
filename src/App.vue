@@ -8,6 +8,7 @@ import MainBar from '@/components/bars/MainBar.vue';
 import MainMenu from '@/components/menus/MainMenu.vue';
 import CardLayout from '@/components/layouts/CardLayout.vue';
 import SnackbarNotifications from '@/components/gears/SnackbarNotifications.vue';
+import PageInfoDialog from '@/components/gears/PageInfoDialog.vue';
 
 import config from '@/config';
 
@@ -31,6 +32,7 @@ const title = computed(() => {
     </v-main>
 
     <SnackbarNotifications />
+    <PageInfoDialog />
   </v-app>
 </template>
 

@@ -54,7 +54,8 @@ const { resetCurrentTheme, resetShownBarButtons } = themeStore;
                 <h3>Transitions</h3>
             </v-col>
             <v-col>
-                <v-select v-model="routeTransition" :items="transitionSelectItems" item-title="title" item-value="value" label="Route transition" />
+                <v-select v-model="routeTransition" :items="transitionSelectItems" item-title="title" item-value="value"
+                    label="Route transition" />
             </v-col>
         </v-row>
         <v-row>

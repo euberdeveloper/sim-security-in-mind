@@ -9,6 +9,7 @@ export const useMenuStore = defineStore('menu', () => {
 
   const infoText = ref<string | null>(null);
   const showInfoButton = computed(() => !!infoText.value);
+  const showInfoDialog = ref(false);
 
-  return { showMenu, toggleMenu, infoText, showInfoButton };
+  return { showMenu, toggleMenu, infoText, showInfoButton, showInfoDialog };
 });

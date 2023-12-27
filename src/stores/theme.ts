@@ -123,7 +123,11 @@ export const useThemeStore = defineStore('theme', () => {
   function resetShownBarButtons() {
     shownBarButtons.value = defaultShownBarButtons();
   }
-  const barButtonsComponents = { barButtonNames, shownBarButtons, resetShownBarButtons };
+  const showDarkMode = computed(() => shownBarButtons.value.includes('darkMode'));
+  const showPrimaryColor = computed(() => shownBarButtons.value.includes('primaryColor'));
+  const showRouteTransition = computed(() => shownBarButtons.value.includes('routeTransition'));
+  const showPageInfo = computed(() => shownBarButtons.value.includes('pageInfo'));
+  const barButtonsComponents = { barButtonNames, shownBarButtons, resetShownBarButtons, showDarkMode, showPrimaryColor, showRouteTransition, showPageInfo };
 
   return { ...paletteComponents, ...transitionComponents, ...barButtonsComponents };
 });
