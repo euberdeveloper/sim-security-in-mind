@@ -27,6 +27,7 @@ const paletteMenuOpen = ref(false);
         v-bind="{ ...props }"
         icon="mdi-format-color-fill"
         @click="!isMobile && randomPrimaryColor()"
+        @contextmenu.prevent="isMobile && randomPrimaryColor()"
       />
     </template>
     <v-color-picker
