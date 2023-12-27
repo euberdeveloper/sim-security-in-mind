@@ -4,7 +4,7 @@ const { toggleDarkMode } = useThemeStore();
 </script>
 
 <template>
-  <v-tooltip text="Modalità notte" location="bottom">
+  <v-tooltip text="Dark mode" location="bottom">
     <template #activator="{ props }">
       <v-btn v-bind="props" icon="mdi-theme-light-dark" @click="toggleDarkMode" />
     </template>

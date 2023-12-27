@@ -26,7 +26,7 @@ defineProps<{
 
         <v-card-actions class="pa-3">
           <v-spacer></v-spacer>
-          <v-btn color="success" variant="outlined" @click="isActive.value = false">CHIUDI</v-btn>
+          <v-btn color="success" variant="outlined" @click="isActive.value = false">CLOSE</v-btn>
           <v-spacer></v-spacer>
         </v-card-actions>
       </v-card>

@@ -38,7 +38,7 @@ const shownItems = computed<MenuItem[]>(() => {
       density="compact"
       hide-details
       variant="outlined"
-      label="Cerca"
+      label="Search"
       name="search"
       v-model="search"
       clearable
