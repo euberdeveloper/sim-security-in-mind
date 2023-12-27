@@ -16,7 +16,6 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@gtm-support/vue-gtm": "^2.2.0",
     "clipboardy": "^4.0.0",
     "lifeware-java-mangler": "^1.0.16",
     "markdown-it": "^14.0.0",
