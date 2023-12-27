@@ -15,19 +15,45 @@ const dialogWidth = computed(() => (isMobile.value ? 'auto' : 650));
 </script>
 
 <template>
-  <CardDialog
-    title="Page information"
-    :width="dialogWidth"
-    :fullscreen="isMobile"
-    v-model="showInfoDialog"
-  >
+  <CardDialog title="Page information" :width="dialogWidth" :fullscreen="isMobile" v-model="showInfoDialog">
     <div v-markdown="infoText" class="markdown-container"></div>
   </CardDialog>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .markdown-container {
   overflow-y: auto;
   overflow-x: auto;
+
+  margin-top: -0.67em;
+
+  :deep {
+    h1 {
+      margin-top: 0.67em;
+      margin-bottom: 0.67em;
+    }
+
+    h2 {
+      margin-top: 0.83em;
+      margin-bottom: 0.83em;
+    }
+
+    h3 {
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+
+    p {
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+
+    ul,
+    ol {
+      margin-top: 1em;
+      margin-bottom: 1em;
+      padding-inline-start: 40px;
+    }
+  }
 }
 </style>
