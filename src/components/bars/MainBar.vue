@@ -16,7 +16,8 @@ const menuStore = useMenuStore();
 const { toggleMenu } = menuStore;
 
 const themeStore = useThemeStore();
-const { showDarkMode, showPrimaryColor, showRouteTransition, showPageInfo } = storeToRefs(themeStore);
+const { showDarkMode, showPrimaryColor, showRouteTransition, showPageInfo } =
+  storeToRefs(themeStore);
 
 const display = useDisplay();
 const isMobile = computed(() => display.smAndDown.value);

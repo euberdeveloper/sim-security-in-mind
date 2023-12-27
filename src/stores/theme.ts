@@ -110,15 +110,23 @@ export const useThemeStore = defineStore('theme', () => {
   function setRouteTransition(transition: TransitionType) {
     routeTransition.value = transition;
   }
-  const transitionComponents = { routeTransition, transitionNames, transitionSelectItems, setRouteTransition };
+  const transitionComponents = {
+    routeTransition,
+    transitionNames,
+    transitionSelectItems,
+    setRouteTransition
+  };
 
   const barButtonNames = ref<Record<string, string>>({
-    'darkMode': 'Dark Mode',
-    'primaryColor': 'Primary Color',
-    'routeTransition': 'Route Transition',
-    'pageInfo': 'Page Info'
+    darkMode: 'Dark Mode',
+    primaryColor: 'Primary Color',
+    routeTransition: 'Route Transition',
+    pageInfo: 'Page Info'
   });
-  const defaultShownBarButtons = () => (display.mobile.value ? ['darkMode', 'pageInfo'] : ['darkMode', 'primaryColor', 'routeTransition', 'pageInfo']);
+  const defaultShownBarButtons = () =>
+    display.mobile.value
+      ? ['darkMode', 'pageInfo']
+      : ['darkMode', 'primaryColor', 'routeTransition', 'pageInfo'];
   const shownBarButtons = ref<string[]>(defaultShownBarButtons());
   function resetShownBarButtons() {
     shownBarButtons.value = defaultShownBarButtons();
@@ -127,7 +135,15 @@ export const useThemeStore = defineStore('theme', () => {
   const showPrimaryColor = computed(() => shownBarButtons.value.includes('primaryColor'));
   const showRouteTransition = computed(() => shownBarButtons.value.includes('routeTransition'));
   const showPageInfo = computed(() => shownBarButtons.value.includes('pageInfo'));
-  const barButtonsComponents = { barButtonNames, shownBarButtons, resetShownBarButtons, showDarkMode, showPrimaryColor, showRouteTransition, showPageInfo };
+  const barButtonsComponents = {
+    barButtonNames,
+    shownBarButtons,
+    resetShownBarButtons,
+    showDarkMode,
+    showPrimaryColor,
+    showRouteTransition,
+    showPageInfo
+  };
 
   return { ...paletteComponents, ...transitionComponents, ...barButtonsComponents };
 });

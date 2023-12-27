@@ -2,13 +2,14 @@
 
 ## Description
 
-Here can the use set the preferences for the website. The preferences are stored in the local storage of the browser and work only in the current browser/device. 
+Here can the use set the preferences for the website. The preferences are stored in the local storage of the browser and work only in the current browser/device.
 
 ## Where to set them
 
 The preferences can be set in the preferences page.
 
 To reach this page:
+
 1. Click on the options button in the top right corner of the website bar
 2. Click on the preferences option
 
@@ -26,7 +27,7 @@ The theme palette is used to set the color palette of the website. Bars, buttons
 
 ### Transitions
 
-The transitions are used to set the transition types of the website. An example could be the transition used when switching between pages. 
+The transitions are used to set the transition types of the website. An example could be the transition used when switching between pages.
 
 ### Diaplayed bar buttons
 

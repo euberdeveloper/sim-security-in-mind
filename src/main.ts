@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 
 import vuetify from '@/plugins/vuetify';
-import {useAnalytics} from '@/plugins/analytics';
+import { useAnalytics } from '@/plugins/analytics';
 import { vMarkdown } from '@/directives/VMarkdown';
 
 import App from './App.vue';
@@ -14,7 +14,7 @@ const app = createApp(App);
 app.use(createPinia());
 app.use(router);
 if (config.gtag.enabled) {
-    useAnalytics(app, router);
+  useAnalytics(app, router);
 }
 app.use(vuetify);
 app.directive('markdown', vMarkdown);

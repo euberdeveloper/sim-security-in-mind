@@ -22,9 +22,17 @@ const isMobile = computed(() => display.mobile.value);
       <v-btn v-bind="props" icon="mdi-dots-vertical" />
     </template>
     <v-list>
-      <v-list-item title="Preferences" prepend-icon="mdi-tune-vertical-variant" :to="{ name: 'preferences' }" />
-      <v-list-item title="Page info" prepend-icon="mdi-information-outline" @click="showInfoDialog = true"
-        v-if="showInfoButton && !showPageInfo" />
+      <v-list-item
+        title="Preferences"
+        prepend-icon="mdi-tune-vertical-variant"
+        :to="{ name: 'preferences' }"
+      />
+      <v-list-item
+        title="Page info"
+        prepend-icon="mdi-information-outline"
+        @click="showInfoDialog = true"
+        v-if="showInfoButton && !showPageInfo"
+      />
     </v-list>
   </v-menu>
 </template>

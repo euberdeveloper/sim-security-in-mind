@@ -4,7 +4,6 @@ import { useMenuStore } from '@/stores/menu';
 
 const menuStore = useMenuStore();
 const { showInfoButton, showInfoDialog } = storeToRefs(menuStore);
-
 </script>
 
 <template>
