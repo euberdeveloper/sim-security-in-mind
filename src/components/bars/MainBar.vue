@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+
 import { useDisplay } from 'vuetify';
 import { useMenuStore } from '@/stores/menu';
 
@@ -6,7 +8,7 @@ import DarkModeAction from './actions/DarkModeAction.vue';
 import ThemePrimaryColorAction from './actions/ThemePrimaryColorAction.vue';
 import TransitionAction from './actions/TransitionAction.vue';
 import InfoAction from './actions/InfoAction.vue';
-import { computed } from 'vue';
+import OptionsAction from './actions/OptionsAction.vue';
 
 const menuStore = useMenuStore();
 const { toggleMenu } = menuStore;
@@ -29,6 +31,7 @@ const title = computed(() => (isMobile.value ? 'LwJavaMangle' : 'Lifeware Java M
       <ThemePrimaryColorAction />
       <TransitionAction />
       <InfoAction />
+      <OptionsAction />
     </template>
   </v-app-bar>
 </template>
