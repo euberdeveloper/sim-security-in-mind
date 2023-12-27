@@ -56,7 +56,8 @@ const router = createRouter({
       name: 'preferences',
       component: PreferencesView,
       meta: {
-        title: 'Preferences'
+        title: 'Preferences',
+        info: 'Preferences'
       }
     }
   ]
