@@ -25,6 +25,8 @@ The theme mode is used to set the theme of the website. The theme can be set to 
 
 The theme palette is used to set the color palette of the website. Bars, buttons, and other elements will be colored according to the palette. There are two palettes, the one for the light mode and the one for the dark mode. When modifying the palette, the changes will be applied to the current selected theme mode.
 
+By clicking the reset button, the palette will be reset to the default one.
+
 ### Transitions
 
 The transitions are used to set the transition types of the website. An example could be the transition used when switching between pages.
@@ -36,6 +38,8 @@ The bar buttons are used to set the buttons that are displayed in the website ba
 ## Bar buttons
 
 The bar buttons are shortcuts for functionalities that can be accessed from the options menu button or other pages. The shown buttons can be set in the preferences page.
+
+By clicking the reset button, the buttons will be reset to the default ones for the current device.
 
 ### Theme mode
 
