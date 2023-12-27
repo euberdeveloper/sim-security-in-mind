@@ -1,6 +1,6 @@
 import { computed, ref, watchEffect, watch } from 'vue';
 import { defineStore, storeToRefs } from 'pinia';
-import { useTheme, type ThemeDefinition } from 'vuetify';
+import { useTheme, useDisplay, type ThemeDefinition } from 'vuetify';
 import {
   VFadeTransition,
   VScaleTransition,
@@ -47,6 +47,7 @@ function cloneThemes(theme: Record<string, ThemeDefinition>): Record<string, The
 
 export const useThemeStore = defineStore('theme', () => {
   const theme = useTheme();
+  const display = useDisplay();
 
   const isDark = ref(theme.current.value.dark);
   const currentThemeName = computed(() => (isDark.value ? 'dark' : 'light'));
@@ -111,7 +112,20 @@ export const useThemeStore = defineStore('theme', () => {
   }
   const transitionComponents = { routeTransition, transitionNames, transitionSelectItems, setRouteTransition };
 
-  return { ...paletteComponents, ...transitionComponents };
+  const barButtonNames = ref<Record<string, string>>({
+    'darkMode': 'Dark Mode',
+    'primaryColor': 'Primary Color',
+    'routeTransition': 'Route Transition',
+    'pageInfo': 'Page Info'
+  });
+  const defaultShownBarButtons = () => (display.mobile.value ? ['darkMode', 'pageInfo'] : ['darkMode', 'primaryColor', 'routeTransition', 'pageInfo']);
+  const shownBarButtons = ref<string[]>(defaultShownBarButtons());
+  function resetShownBarButtons() {
+    shownBarButtons.value = defaultShownBarButtons();
+  }
+  const barButtonsComponents = { barButtonNames, shownBarButtons, resetShownBarButtons };
+
+  return { ...paletteComponents, ...transitionComponents, ...barButtonsComponents };
 });
 
 export function syncThemeStoreWithLocalStorage(localStorageKey: string) {
