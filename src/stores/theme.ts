@@ -86,11 +86,14 @@ export const useThemeStore = defineStore('theme', () => {
     VSlideXTransition: 'Slide X',
     VSlideYTransition: 'Slide Y'
   });
+  const transitionSelectItems = computed(() =>
+    Object.entries(transitionNames.value).map(([key, value]) => ({ title: value, value: key }))
+  );
   const routeTransition = ref<TransitionType>('VFadeTransition');
   function setRouteTransition(transition: TransitionType) {
     routeTransition.value = transition;
   }
-  const transitionComponents = { routeTransition, transitionNames, setRouteTransition };
+  const transitionComponents = { routeTransition, transitionNames, transitionSelectItems, setRouteTransition };
 
   return { ...paletteComponents, ...transitionComponents };
 });

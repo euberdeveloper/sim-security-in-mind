@@ -1,9 +1,55 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-
-const title = ref('Preferences');
+import {storeToRefs} from 'pinia';
+import { useThemeStore } from '@/stores/theme';
+const { isDark, themeColors, routeTransition, transitionSelectItems } = storeToRefs(useThemeStore());
 </script>
 
 <template>
- {{ title }}
+    <v-container>
+        <v-row>
+            <v-col :cols="12">
+                <h3>Dark mode</h3>
+            </v-col>
+            <v-col>
+                <v-switch v-model="isDark" label="Dark mode" color="secondary" hide-details inset />
+            </v-col>
+        </v-row>
+        <v-row>
+            <v-col :cols="12">
+                <h3>Color palette</h3>
+            </v-col>
+            <v-col :cols="3">
+                <v-text-field v-model="themeColors.primary" type="color" label="Primary" />
+            </v-col>
+            <v-col :cols="3">
+                <v-text-field v-model="themeColors.secondary" type="color" label="Secondary" />
+            </v-col>
+            <v-col :cols="3">
+                <v-text-field v-model="themeColors.success" type="color" label="Success" />
+            </v-col>
+            <v-col :cols="3">
+                <v-text-field v-model="themeColors.info" type="color" label="Info" />
+            </v-col>
+            <v-col :cols="3">
+                <v-text-field v-model="themeColors.warning" type="color" label="Warning" />
+            </v-col>
+            <v-col :cols="3">
+                <v-text-field v-model="themeColors.error" type="color" label="Error" />
+            </v-col>
+            <v-col :cols="3">
+                <v-text-field v-model="themeColors.background" type="color" label="Background" />
+            </v-col>
+            <v-col :cols="3">
+                <v-text-field v-model="themeColors.surface" type="color" label="Surface" />
+            </v-col>
+        </v-row>
+        <v-row>
+            <v-col :cols="12">
+                <h3>Transitions</h3>
+            </v-col>
+            <v-col>
+                <v-select v-model="routeTransition" :items="transitionSelectItems" item-title="title" item-value="value" label="Route transition" />
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
