@@ -49,7 +49,7 @@ const shownItems = computed<MenuItem[]>(() => {
         v-for="{ path, icon, text } of shownItems"
         :key="path"
         :title="text"
-        :to="path"
+        :to="{ name: path }"
         rounded="xl"
         :prepend-icon="icon"
       />

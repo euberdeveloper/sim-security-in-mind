@@ -6,16 +6,17 @@ import MangleTypeView from '@/views/MangleTypeView.vue';
 import MangleClassIdentifierView from '@/views/MangleClassIdentifierView.vue';
 import MangleClassMethodView from '@/views/MangleClassMethodView.vue';
 import MangleClassConstructorView from '@/views/MangleClassConstructorView.vue';
+import PreferencesView from '@/views/PreferencesView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      redirect: '/mangle-type'
+      redirect: { name: 'mangle-type' }
     },
     {
-      path: '/mangle-type',
+      path: '/mangle/mangle-type',
       name: 'mangle-type',
       component: MangleTypeView,
       meta: {
@@ -24,7 +25,7 @@ const router = createRouter({
       }
     },
     {
-      path: '/mangle-class-identifier',
+      path: '/mangle/mangle-class-identifier',
       name: 'mangle-class-identifier',
       component: MangleClassIdentifierView,
       meta: {
@@ -33,7 +34,7 @@ const router = createRouter({
       }
     },
     {
-      path: '/mangle-class-method',
+      path: '/mangle/mangle-class-method',
       name: 'mangle-class-method',
       component: MangleClassMethodView,
       meta: {
@@ -42,12 +43,20 @@ const router = createRouter({
       }
     },
     {
-      path: '/mangle-class-constructor',
+      path: '/mangle/mangle-class-constructor',
       name: 'mangle-class-constructor',
       component: MangleClassConstructorView,
       meta: {
         title: 'Mangle Class Constructor',
         info: 'MangleConstructor'
+      }
+    },
+    {
+      path: '/preferences',
+      name: 'preferences',
+      component: PreferencesView,
+      meta: {
+        title: 'Preferences'
       }
     }
   ]
