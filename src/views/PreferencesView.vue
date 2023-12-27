@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import {storeToRefs} from 'pinia';
 import { useThemeStore } from '@/stores/theme';
-const { isDark, themeColors, routeTransition, transitionSelectItems } = storeToRefs(useThemeStore());
+const themeStore= useThemeStore();
+const { isDark, themeColors, routeTransition, transitionSelectItems } = storeToRefs(themeStore);
+const { resetCurrentTheme } = themeStore;
 </script>
 
 <template>
@@ -41,6 +43,9 @@ const { isDark, themeColors, routeTransition, transitionSelectItems } = storeToR
             </v-col>
             <v-col :cols="3">
                 <v-text-field v-model="themeColors.surface" type="color" label="Surface" />
+            </v-col>
+            <v-col>
+                <v-btn color="warning" @click="resetCurrentTheme">Reset</v-btn>
             </v-col>
         </v-row>
         <v-row>

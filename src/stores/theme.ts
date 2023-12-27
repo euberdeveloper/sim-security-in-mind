@@ -34,12 +34,24 @@ export interface VuetifyThemeColors extends VuetifyThemeBaseColors, VuetifyTheme
   [key: string]: string;
 }
 
+function cloneTheme(theme: ThemeDefinition): ThemeDefinition {
+  return { ...theme, colors: { ...theme.colors } };
+}
+function cloneThemes(theme: Record<string, ThemeDefinition>): Record<string, ThemeDefinition> {
+  return {
+    ...theme,
+    light: cloneTheme(theme.light),
+    dark: cloneTheme(theme.dark)
+  };
+}
+
 export const useThemeStore = defineStore('theme', () => {
   const theme = useTheme();
 
   const isDark = ref(theme.current.value.dark);
   const currentThemeName = computed(() => (isDark.value ? 'dark' : 'light'));
-  const themes = ref<Record<string, ThemeDefinition>>({ ...theme.themes.value });
+  const defaultThemes = ref<Record<string, ThemeDefinition>>(cloneThemes(theme.themes.value));
+  const themes = ref<Record<string, ThemeDefinition>>(theme.themes.value);
   const themeColors = computed<VuetifyThemeColors>(
     () => themes.value[currentThemeName.value].colors as VuetifyThemeColors
   );
@@ -52,6 +64,9 @@ export const useThemeStore = defineStore('theme', () => {
   }
   function randomPrimaryColor() {
     primaryColor.value = getRandomColor();
+  }
+  function resetCurrentTheme() {
+    themes.value[currentThemeName.value] = cloneTheme(defaultThemes.value[currentThemeName.value]);
   }
   function applyThemeDarkMode() {
     theme.global.name.value = currentThemeName.value;
@@ -67,6 +82,7 @@ export const useThemeStore = defineStore('theme', () => {
     primaryColor,
     toggleDarkMode,
     randomPrimaryColor,
+    resetCurrentTheme,
     applyThemeDarkMode,
     applyThemeColors
   };
@@ -100,7 +116,7 @@ export const useThemeStore = defineStore('theme', () => {
 
 export function syncThemeStoreWithLocalStorage(localStorageKey: string) {
   const themeStore = useThemeStore();
-  const { isDark, currentThemeName, themeColors } = storeToRefs(themeStore);
+  const { isDark, currentThemeName, themes, themeColors } = storeToRefs(themeStore);
   const localTheme = localStorage.getItem(localStorageKey);
 
   if (localTheme) {
@@ -114,7 +130,7 @@ export function syncThemeStoreWithLocalStorage(localStorageKey: string) {
   watch([isDark, currentThemeName], () => {
     themeStore.applyThemeDarkMode();
   });
-  watch(themeColors, () => {
+  watch([themes, themeColors], () => {
     themeStore.applyThemeColors();
   });
 }
