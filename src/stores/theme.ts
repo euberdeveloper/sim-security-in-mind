@@ -8,7 +8,9 @@ import {
   VSlideXTransition,
   VSlideYTransition
 } from 'vuetify/components';
+
 import { getRandomColor } from '@/utils/colors';
+import { download } from '@/utils/download';
 
 export interface VuetifyThemeBaseColors {
   background: string;
@@ -145,7 +147,7 @@ export const useThemeStore = defineStore('theme', () => {
     showPageInfo
   };
 
-  return { ...paletteComponents, ...transitionComponents, ...barButtonsComponents };
+  return { ...paletteComponents, ...transitionComponents, ...barButtonsComponents }
 });
 
 export function syncThemeStoreWithLocalStorage(localStorageKey: string) {
@@ -167,4 +169,25 @@ export function syncThemeStoreWithLocalStorage(localStorageKey: string) {
   watch([themes, themeColors], () => {
     themeStore.applyThemeColors();
   });
+}
+
+export function exportPreferences() {
+  const themeStore = useThemeStore();
+  const serializedState = JSON.stringify(themeStore.$state);
+  const blob = new Blob([serializedState], { type: 'application/json' });
+  download(blob, 'preferences.json');
+}
+
+export function importPreferences(fileList: FileList | null) {
+  if (fileList && fileList.length > 0) {
+    const file = fileList[0];
+    const reader = new FileReader();
+    reader.readAsText(file); 
+    reader.onload = () => {
+      const jsonPreferences = JSON.parse(reader.result as string);
+      const themeStore = useThemeStore();
+      themeStore.$patch(jsonPreferences);
+      themeStore.applyThemeDarkMode();
+    };
+  }
 }
