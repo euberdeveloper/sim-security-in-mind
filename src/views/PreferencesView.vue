@@ -54,7 +54,7 @@ const { resetCurrentTheme, resetShownBarButtons } = themeStore;
       <v-col :md="3" :cols="6">
         <v-text-field v-model="themeColors.surface" type="color" label="Surface" />
       </v-col>
-      <v-col>
+      <v-col :cols="12">
         <v-btn color="warning" @click="resetCurrentTheme">Reset</v-btn>
       </v-col>
     </v-row>
@@ -74,7 +74,7 @@ const { resetCurrentTheme, resetShownBarButtons } = themeStore;
       <v-col v-for="(name, value) in barButtonNames" :key="value" :cols="6" :md="4" :lg="3">
         <v-switch v-model="shownBarButtons" :label="name" :value="value" color="secondary" hide-details inset />
       </v-col>
-      <v-col>
+      <v-col :cols="12">
         <v-btn color="warning" @click="resetShownBarButtons">Reset</v-btn>
       </v-col>
     </v-row>
