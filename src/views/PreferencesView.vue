@@ -84,7 +84,9 @@ const { resetCurrentTheme, resetShownBarButtons } = themeStore;
       </v-col>
       <v-col>
         <BtnFileInput accept=".json" @selected="importPreferences">
-          Import
+          <template #activator="{ activate }">
+            <v-btn class="ml-0 mx-2" color="secondary" @click="activate">Import</v-btn>
+          </template>
         </BtnFileInput>
         <v-btn class="ml-0 mx-2" color="secondary" @click="exportPreferences">Export</v-btn>
       </v-col>

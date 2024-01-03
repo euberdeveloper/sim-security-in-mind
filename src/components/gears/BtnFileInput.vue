@@ -29,7 +29,7 @@ function chooseFiles() {
 <template>
   <input ref="fileInput" type="file" :multiple="multiple" :accept="accept" @change="onFileChange($event as InputEvent)"
     hidden />
-  <v-btn class="ml-0 mx-2" color="secondary" @click="chooseFiles">
-    <slot>{{ text }}</slot>
-  </v-btn>
+  <slot name="activator" :text="text" :activate="chooseFiles">
+    <button @click="chooseFiles">{{ text }}</button>
+  </slot>
 </template>
