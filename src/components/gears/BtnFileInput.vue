@@ -20,6 +20,7 @@ function onFileChange(e: InputEvent) {
 
 function chooseFiles() {
   if (fileInput.value) {
+    fileInput.value.value = '';
     fileInput.value.click();
   }
 }
