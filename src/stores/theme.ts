@@ -123,12 +123,13 @@ export const useThemeStore = defineStore('theme', () => {
     darkMode: 'Dark Mode',
     primaryColor: 'Primary Color',
     routeTransition: 'Route Transition',
-    pageInfo: 'Page Info'
+    pageInfo: 'Page Info',
+    language: 'Language'
   });
   const defaultShownBarButtons = () =>
     display.mobile.value
-      ? ['darkMode', 'pageInfo']
-      : ['darkMode', 'primaryColor', 'routeTransition', 'pageInfo'];
+      ? ['darkMode', 'pageInfo', 'language']
+      : ['darkMode', 'primaryColor', 'routeTransition', 'pageInfo', 'language'];
   const shownBarButtons = ref<string[]>(defaultShownBarButtons());
   function resetShownBarButtons() {
     shownBarButtons.value = defaultShownBarButtons();
@@ -137,6 +138,7 @@ export const useThemeStore = defineStore('theme', () => {
   const showPrimaryColor = computed(() => shownBarButtons.value.includes('primaryColor'));
   const showRouteTransition = computed(() => shownBarButtons.value.includes('routeTransition'));
   const showPageInfo = computed(() => shownBarButtons.value.includes('pageInfo'));
+  const showLanguage = computed(() => shownBarButtons.value.includes('language'));
   const barButtonsComponents = {
     barButtonNames,
     shownBarButtons,
@@ -144,7 +146,8 @@ export const useThemeStore = defineStore('theme', () => {
     showDarkMode,
     showPrimaryColor,
     showRouteTransition,
-    showPageInfo
+    showPageInfo,
+    showLanguage
   };
 
   return { ...paletteComponents, ...transitionComponents, ...barButtonsComponents }
