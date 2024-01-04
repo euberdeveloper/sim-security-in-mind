@@ -27,8 +27,14 @@ function chooseFiles() {
 </script>
 
 <template>
-  <input ref="fileInput" type="file" :multiple="multiple" :accept="accept" @change="onFileChange($event as InputEvent)"
-    hidden />
+  <input
+    ref="fileInput"
+    type="file"
+    :multiple="multiple"
+    :accept="accept"
+    @change="onFileChange($event as InputEvent)"
+    hidden
+  />
   <slot name="activator" :text="text" :activate="chooseFiles">
     <button @click="chooseFiles">{{ text }}</button>
   </slot>

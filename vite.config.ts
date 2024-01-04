@@ -4,9 +4,10 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vuetify from 'vite-plugin-vuetify';
 import { VitePWA } from 'vite-plugin-pwa';
+import svgLoader from 'vite-svg-loader';
+
 import manifest from './manifest';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     VitePWA({ 
@@ -14,7 +15,8 @@ export default defineConfig({
       manifest
     }),
     vue(),
-    vuetify({ styles: { configFile: './src/styles/vuetify-settings.scss' } })
+    vuetify({ styles: { configFile: './src/styles/vuetify-settings.scss' } }),
+    svgLoader()
   ],
   define: {
     '__APP_VERSION__': JSON.stringify(process.env.npm_package_version)

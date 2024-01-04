@@ -11,12 +11,13 @@ import ThemePrimaryColorAction from './actions/ThemePrimaryColorAction.vue';
 import TransitionAction from './actions/TransitionAction.vue';
 import InfoAction from './actions/InfoAction.vue';
 import OptionsAction from './actions/OptionsAction.vue';
+import LanguageAction from './actions/LanguageAction.vue';
 
 const menuStore = useMenuStore();
 const { toggleMenu } = menuStore;
 
 const themeStore = useThemeStore();
-const { showDarkMode, showPrimaryColor, showRouteTransition, showPageInfo } =
+const { showDarkMode, showPrimaryColor, showRouteTransition, showPageInfo, showLanguage } =
   storeToRefs(themeStore);
 
 const display = useDisplay();
@@ -37,6 +38,7 @@ const title = computed(() => (isMobile.value ? 'LwJavaMangle' : 'Lifeware Java M
       <ThemePrimaryColorAction v-if="showPrimaryColor" />
       <TransitionAction v-if="showRouteTransition" />
       <InfoAction v-if="showPageInfo" />
+      <LanguageAction v-if="showLanguage" />
       <OptionsAction />
     </template>
   </v-app-bar>

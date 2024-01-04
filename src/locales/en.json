@@ -1,0 +1,59 @@
+{
+  "routes": {
+    "mangle-type": "Type",
+    "mangle-class-identifier": "Class Identifier",
+    "mangle-class-method": "Method",
+    "mangle-class-constructor": "Constructor",
+    "preferences": "Preferences"
+  },
+  "menu": {
+    "search": "Search",
+    "version": "Version",
+    "pages": {
+      "mangle-type": "Mangle type",
+      "mangle-class-identifier": "Mangle class identifier",
+      "mangle-class-method": "Mangle class method",
+      "mangle-class-constructor": "Mangle class constructor"
+    }
+  },
+  "preferences": {
+    "title": "Preferences",
+    "colorPalette": {
+      "title": "Color palette",
+      "primary": "Primary",
+      "secondary": "Secondary",
+      "success": "Success",
+      "info": "Info",
+      "warning": "Warning",
+      "error": "Error",
+      "background": "Background",
+      "surface": "Surface"
+    },
+    "transitions": {
+      "title": "Transitions",
+      "fade": "Fade",
+      "scale": "Scale",
+      "expand": "Expand",
+      "slideX": "Slide X",
+      "slideY": "Slide Y"
+    },
+    "barButtons": {
+      "title": "Bar buttons",
+      "darkMode": "Dark Mode",
+      "primaryColor": "Primary Color",
+      "routeTransition": "Route Transition",
+      "pageInfo": "Page Info",
+      "language": "Language"
+    },
+    "language": {
+      "en": "English",
+      "it": "Italian"
+    },
+    "importExport": {
+      "title": "Import and export preferences",
+      "import": "Import",
+      "export": "Export"
+    },
+    "reset": "Reset"
+  }
+}

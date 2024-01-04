@@ -1,0 +1,59 @@
+{
+  "routes": {
+    "mangle-type": "Tipo",
+    "mangle-class-identifier": "Identificatore classe",
+    "mangle-class-method": "Metodo",
+    "mangle-class-constructor": "Costruttore",
+    "preferences": "Preferenze"
+  },
+  "menu": {
+    "search": "Cerca",
+    "version": "Versione",
+    "pages": {
+      "mangle-type": "Traduci tipo",
+      "mangle-class-identifier": "Traduci identificatore classe",
+      "mangle-class-method": "Traduci metodo classe",
+      "mangle-class-constructor": "Traduci costruttore classe"
+    }
+  },
+  "preferences": {
+    "title": "Preferenze",
+    "colorPalette": {
+      "title": "Colori",
+      "primary": "Primario",
+      "secondary": "Secondario",
+      "success": "Succ",
+      "info": "Info",
+      "warning": "Warn",
+      "error": "Errore",
+      "background": "Sfondo",
+      "surface": "Superficie"
+    },
+    "transitions": {
+      "title": "Transizioni",
+      "fade": "Dissolvenza",
+      "scale": "Dimensione",
+      "expand": "Espansione",
+      "slideX": "Scorrimento X",
+      "slideY": "Scorrimento Y"
+    },
+    "barButtons": {
+      "title": "Bottoni della barra",
+      "darkMode": "Notturna",
+      "primaryColor": "Colore primario",
+      "routeTransition": "Transizione schermata",
+      "pageInfo": "Info pagina",
+      "language": "Lingua"
+    },
+    "language": {
+      "en": "Inglese",
+      "it": "Italiano"
+    },
+    "importExport": {
+      "title": "Importa ed esporta preferenze",
+      "import": "Importa",
+      "export": "Esporta"
+    },
+    "reset": "Ripristina"
+  }
+}

@@ -1,4 +1,4 @@
-import { computed, ref, watchEffect, watch } from 'vue';
+import { computed, ref, watchEffect, watch, type ComputedRef } from 'vue';
 import { defineStore, storeToRefs } from 'pinia';
 import { useTheme, useDisplay, type ThemeDefinition } from 'vuetify';
 import {
@@ -8,6 +8,9 @@ import {
   VSlideXTransition,
   VSlideYTransition
 } from 'vuetify/components';
+import { useI18n } from 'vue-i18n';
+
+import { useLanguageStore } from '@/stores/language';
 
 import { getRandomColor } from '@/utils/colors';
 import { download } from '@/utils/download';
@@ -47,9 +50,17 @@ function cloneThemes(theme: Record<string, ThemeDefinition>): Record<string, The
   };
 }
 
+export interface Language {
+  name: string;
+  icon: string;
+  label: string;
+}
+
 export const useThemeStore = defineStore('theme', () => {
   const theme = useTheme();
   const display = useDisplay();
+  const i18n = useI18n();
+  const languageStore = useLanguageStore();
 
   const isDark = ref(theme.current.value.dark);
   const currentThemeName = computed(() => (isDark.value ? 'dark' : 'light'));
@@ -98,13 +109,13 @@ export const useThemeStore = defineStore('theme', () => {
     VSlideYTransition
   };
   type TransitionType = keyof typeof transitionMapping;
-  const transitionNames = ref<Record<TransitionType, string>>({
-    VFadeTransition: 'Fade',
-    VScaleTransition: 'Scale',
-    VExpandTransition: 'Expand',
-    VSlideXTransition: 'Slide X',
-    VSlideYTransition: 'Slide Y'
-  });
+  const transitionNames = computed<Record<TransitionType, string>>(() => ({
+    VFadeTransition: i18n.t('preferences.transitions.fade'),
+    VScaleTransition: i18n.t('preferences.transitions.scale'),
+    VExpandTransition: i18n.t('preferences.transitions.expand'),
+    VSlideXTransition: i18n.t('preferences.transitions.slideX'),
+    VSlideYTransition: i18n.t('preferences.transitions.slideY')
+  }));
   const transitionSelectItems = computed(() =>
     Object.entries(transitionNames.value).map(([key, value]) => ({ title: value, value: key }))
   );
@@ -120,15 +131,16 @@ export const useThemeStore = defineStore('theme', () => {
   };
 
   const barButtonNames = ref<Record<string, string>>({
-    darkMode: 'Dark Mode',
-    primaryColor: 'Primary Color',
-    routeTransition: 'Route Transition',
-    pageInfo: 'Page Info'
+    darkMode: computed(() => i18n.t('preferences.barButtons.darkMode')) as any,
+    primaryColor: computed(() => i18n.t('preferences.barButtons.primaryColor')) as any,
+    routeTransition: computed(() => i18n.t('preferences.barButtons.routeTransition')) as any,
+    pageInfo: computed(() => i18n.t('preferences.barButtons.pageInfo')) as any,
+    language: computed(() => i18n.t('preferences.barButtons.language')) as any
   });
   const defaultShownBarButtons = () =>
     display.mobile.value
-      ? ['darkMode', 'pageInfo']
-      : ['darkMode', 'primaryColor', 'routeTransition', 'pageInfo'];
+      ? ['darkMode', 'pageInfo', 'language']
+      : ['darkMode', 'primaryColor', 'routeTransition', 'pageInfo', 'language'];
   const shownBarButtons = ref<string[]>(defaultShownBarButtons());
   function resetShownBarButtons() {
     shownBarButtons.value = defaultShownBarButtons();
@@ -137,6 +149,7 @@ export const useThemeStore = defineStore('theme', () => {
   const showPrimaryColor = computed(() => shownBarButtons.value.includes('primaryColor'));
   const showRouteTransition = computed(() => shownBarButtons.value.includes('routeTransition'));
   const showPageInfo = computed(() => shownBarButtons.value.includes('pageInfo'));
+  const showLanguage = computed(() => shownBarButtons.value.includes('language'));
   const barButtonsComponents = {
     barButtonNames,
     shownBarButtons,
@@ -144,10 +157,32 @@ export const useThemeStore = defineStore('theme', () => {
     showDarkMode,
     showPrimaryColor,
     showRouteTransition,
-    showPageInfo
+    showPageInfo,
+    showLanguage
   };
 
-  return { ...paletteComponents, ...transitionComponents, ...barButtonsComponents }
+  const languages = computed<Language[]>(() => [
+    {
+      name: 'it',
+      icon: 'it',
+      label: i18n.t('preferences.language.it')
+    },
+    {
+      name: 'en',
+      icon: 'gb',
+      label: i18n.t('preferences.language.en')
+    }
+  ]);
+  const languageComponents = {
+    languages
+  };
+
+  return {
+    ...paletteComponents,
+    ...transitionComponents,
+    ...barButtonsComponents,
+    ...languageComponents
+  };
 });
 
 export function syncThemeStoreWithLocalStorage(localStorageKey: string) {
@@ -156,7 +191,9 @@ export function syncThemeStoreWithLocalStorage(localStorageKey: string) {
   const localTheme = localStorage.getItem(localStorageKey);
 
   if (localTheme) {
-    themeStore.$patch(JSON.parse(localTheme));
+    const localPreferences = JSON.parse(localTheme);
+    delete localPreferences.barButtonNames;
+    themeStore.$patch(localPreferences);
     themeStore.applyThemeDarkMode();
   }
 
@@ -182,7 +219,7 @@ export function importPreferences(fileList: FileList | null) {
   if (fileList && fileList.length > 0) {
     const file = fileList[0];
     const reader = new FileReader();
-    reader.readAsText(file); 
+    reader.readAsText(file);
     reader.onload = () => {
       const jsonPreferences = JSON.parse(reader.result as string);
       const themeStore = useThemeStore();

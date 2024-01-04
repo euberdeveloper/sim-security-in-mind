@@ -7,7 +7,7 @@ const { showInfoButton, showInfoDialog } = storeToRefs(menuStore);
 </script>
 
 <template>
-  <v-tooltip text="Info pagina" location="bottom" v-if="showInfoButton">
+  <v-tooltip :text="$t('preferences.barButtons.pageInfo')" location="bottom" v-if="showInfoButton">
     <template #activator="{ props }">
       <v-btn v-bind="props" icon="mdi-information-outline" @click="showInfoDialog = true" />
     </template>
