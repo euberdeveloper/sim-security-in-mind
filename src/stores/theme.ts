@@ -10,6 +10,8 @@ import {
 } from 'vuetify/components';
 import { useI18n } from 'vue-i18n';
 
+import { useLanguageStore } from '@/stores/language';
+
 import { getRandomColor } from '@/utils/colors';
 import { download } from '@/utils/download';
 
@@ -58,6 +60,7 @@ export const useThemeStore = defineStore('theme', () => {
   const theme = useTheme();
   const display = useDisplay();
   const i18n = useI18n();
+  const languageStore = useLanguageStore();
 
   const isDark = ref(theme.current.value.dark);
   const currentThemeName = computed(() => (isDark.value ? 'dark' : 'light'));
@@ -158,10 +161,31 @@ export const useThemeStore = defineStore('theme', () => {
     showLanguage
   };
 
+  const languages = computed<Language[]>(() => [
+    {
+      name: 'it',
+      icon: 'it',
+      label: i18n.t('preferences.language.it')
+    },
+    {
+      name: 'en',
+      icon: 'gb',
+      label: i18n.t('preferences.language.en')
+    }
+  ]);
+  const currentLanguage = computed(() =>
+    languages.value.find((l) => l.name === languageStore.language.value)
+  );
+  const languageComponents = {
+    languages,
+    currentLanguage
+  };
+
   return {
     ...paletteComponents,
     ...transitionComponents,
-    ...barButtonsComponents
+    ...barButtonsComponents,
+    ...languageComponents
   };
 });
 

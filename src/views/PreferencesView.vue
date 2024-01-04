@@ -12,12 +12,13 @@ const {
   routeTransition,
   transitionSelectItems,
   barButtonNames,
-  shownBarButtons
+  shownBarButtons,
+  languages
 } = storeToRefs(themeStore);
 const { resetCurrentTheme, resetShownBarButtons } = themeStore;
 
 const languageStore = useLanguageStore();
-const { languages, language } = languageStore;
+const { language } = languageStore;
 </script>
 
 <template>
@@ -27,7 +28,13 @@ const { languages, language } = languageStore;
         <h3>{{ $t('preferences.barButtons.darkMode') }}</h3>
       </v-col>
       <v-col>
-        <v-switch v-model="isDark" :label="$t('preferences.barButtons.darkMode')" color="secondary" hide-details inset />
+        <v-switch
+          v-model="isDark"
+          :label="$t('preferences.barButtons.darkMode')"
+          color="secondary"
+          hide-details
+          inset
+        />
       </v-col>
     </v-row>
     <v-row>
@@ -35,31 +42,63 @@ const { languages, language } = languageStore;
         <h3>{{ $t('preferences.colorPalette.title') }}</h3>
       </v-col>
       <v-col :md="3" :cols="6">
-        <v-text-field v-model="themeColors.primary" type="color" :label="$t('preferences.colorPalette.primary')" />
+        <v-text-field
+          v-model="themeColors.primary"
+          type="color"
+          :label="$t('preferences.colorPalette.primary')"
+        />
       </v-col>
       <v-col :md="3" :cols="6">
-        <v-text-field v-model="themeColors.secondary" type="color" :label="$t('preferences.colorPalette.secondary')" />
+        <v-text-field
+          v-model="themeColors.secondary"
+          type="color"
+          :label="$t('preferences.colorPalette.secondary')"
+        />
       </v-col>
       <v-col :md="3" :cols="6">
-        <v-text-field v-model="themeColors.success" type="color" :label="$t('preferences.colorPalette.success')" />
+        <v-text-field
+          v-model="themeColors.success"
+          type="color"
+          :label="$t('preferences.colorPalette.success')"
+        />
       </v-col>
       <v-col :md="3" :cols="6">
-        <v-text-field v-model="themeColors.info" type="color" :label="$t('preferences.colorPalette.info')" />
+        <v-text-field
+          v-model="themeColors.info"
+          type="color"
+          :label="$t('preferences.colorPalette.info')"
+        />
       </v-col>
       <v-col :md="3" :cols="6">
-        <v-text-field v-model="themeColors.warning" type="color" :label="$t('preferences.colorPalette.warning')" />
+        <v-text-field
+          v-model="themeColors.warning"
+          type="color"
+          :label="$t('preferences.colorPalette.warning')"
+        />
       </v-col>
       <v-col :md="3" :cols="6">
-        <v-text-field v-model="themeColors.error" type="color" :label="$t('preferences.colorPalette.error')" />
+        <v-text-field
+          v-model="themeColors.error"
+          type="color"
+          :label="$t('preferences.colorPalette.error')"
+        />
       </v-col>
       <v-col :md="3" :cols="6">
-        <v-text-field v-model="themeColors.background" type="color" :label="$t('preferences.colorPalette.background')" />
+        <v-text-field
+          v-model="themeColors.background"
+          type="color"
+          :label="$t('preferences.colorPalette.background')"
+        />
       </v-col>
       <v-col :md="3" :cols="6">
-        <v-text-field v-model="themeColors.surface" type="color" :label="$t('preferences.colorPalette.surface')" />
+        <v-text-field
+          v-model="themeColors.surface"
+          type="color"
+          :label="$t('preferences.colorPalette.surface')"
+        />
       </v-col>
       <v-col :cols="12">
-        <v-btn color="warning" @click="resetCurrentTheme">{{$t('preferences.reset')}}</v-btn>
+        <v-btn color="warning" @click="resetCurrentTheme">{{ $t('preferences.reset') }}</v-btn>
       </v-col>
     </v-row>
     <v-row>
@@ -119,10 +158,14 @@ const { languages, language } = languageStore;
       <v-col>
         <BtnFileInput accept=".json" @selected="importPreferences">
           <template #activator="{ activate }">
-            <v-btn class="ml-0 mx-2" color="secondary" @click="activate">{{ $t('preferences.importExport.import') }}</v-btn>
+            <v-btn class="ml-0 mx-2" color="secondary" @click="activate">{{
+              $t('preferences.importExport.import')
+            }}</v-btn>
           </template>
         </BtnFileInput>
-        <v-btn class="ml-0 mx-2" color="secondary" @click="exportPreferences">{{ $t('preferences.importExport.export') }}</v-btn>
+        <v-btn class="ml-0 mx-2" color="secondary" @click="exportPreferences">{{
+          $t('preferences.importExport.export')
+        }}</v-btn>
       </v-col>
     </v-row>
   </v-container>

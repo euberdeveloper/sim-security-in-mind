@@ -8,10 +8,10 @@ import config from '@/config';
 
 function i18n() {
   const languageStore = useLanguageStore();
-  const { languages, language } = storeToRefs(languageStore);
+  const { supportedLanguages, language } = storeToRefs(languageStore);
 
-  const messages = languages.value.reduce<Record<string, any>>((acc, lang) => {
-    acc[lang.name] = locales[lang.name];
+  const messages = supportedLanguages.value.reduce<Record<string, any>>((acc, lang) => {
+    acc[lang] = locales[lang];
     return acc;
   }, {});
 

@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 
+import { useThemeStore } from '@/stores/theme';
 import { useLanguageStore } from '@/stores/language';
+
+const themeStore = useThemeStore();
+const { languages } = storeToRefs(themeStore);
+
 const languageStore = useLanguageStore();
-const { language, languages } = storeToRefs(languageStore);
+const { language } = storeToRefs(languageStore);
 </script>
 
 <template>
