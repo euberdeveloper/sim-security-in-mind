@@ -12,7 +12,18 @@ export default defineConfig({
   plugins: [
     VitePWA({ 
       registerType: 'autoUpdate',
-      manifest
+      manifest,
+      workbox: {
+        runtimeCaching: [
+          {
+            urlPattern: new RegExp('https://lifeware-java-mangler.euber.dev/assets/'),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'assets'
+            }
+          }
+        ]
+      }
     }),
     vue(),
     vuetify({ styles: { configFile: './src/styles/vuetify-settings.scss' } }),
