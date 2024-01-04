@@ -13,6 +13,8 @@ import MangleMethodEn from './mangle-method.en.md?raw';
 import MangleMethodIt from './mangle-method.it.md?raw';
 import PreferencesEn from './preferences.en.md?raw';
 
+import type { SupportedLanguage } from '@/stores/language';
+
 const markdowns = {
   'mangle-constructor': {
     it: MangleConstructorIt,
@@ -34,7 +36,7 @@ const markdowns = {
     it: PreferencesIt,
     en: PreferencesEn
   }
-};
+} satisfies Record<string, Record<SupportedLanguage, string>>;
 
 export type MarkdownKey = keyof typeof markdowns;
 
