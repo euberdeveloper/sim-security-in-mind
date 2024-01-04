@@ -1,4 +1,4 @@
-import { computed, ref, watchEffect, watch } from 'vue';
+import { computed, ref, watchEffect, watch, type ComputedRef } from 'vue';
 import { defineStore, storeToRefs } from 'pinia';
 import { useTheme, useDisplay, type ThemeDefinition } from 'vuetify';
 import {
@@ -131,11 +131,11 @@ export const useThemeStore = defineStore('theme', () => {
   };
 
   const barButtonNames = ref<Record<string, string>>({
-    darkMode: i18n.t('preferences.barButtons.darkMode'),
-    primaryColor: i18n.t('preferences.barButtons.primaryColor'),
-    routeTransition: i18n.t('preferences.barButtons.routeTransition'),
-    pageInfo: i18n.t('preferences.barButtons.pageInfo'),
-    language: i18n.t('preferences.barButtons.language')
+    darkMode: computed(() => i18n.t('preferences.barButtons.darkMode')) as any,
+    primaryColor: computed(() => i18n.t('preferences.barButtons.primaryColor')) as any,
+    routeTransition: computed(() => i18n.t('preferences.barButtons.routeTransition')) as any,
+    pageInfo: computed(() => i18n.t('preferences.barButtons.pageInfo')) as any,
+    language: computed(() => i18n.t('preferences.barButtons.language')) as any
   });
   const defaultShownBarButtons = () =>
     display.mobile.value
@@ -173,12 +173,8 @@ export const useThemeStore = defineStore('theme', () => {
       label: i18n.t('preferences.language.en')
     }
   ]);
-  const currentLanguage = computed(() =>
-    languages.value.find((l) => l.name === languageStore.language.value)
-  );
   const languageComponents = {
-    languages,
-    currentLanguage
+    languages
   };
 
   return {
@@ -195,7 +191,9 @@ export function syncThemeStoreWithLocalStorage(localStorageKey: string) {
   const localTheme = localStorage.getItem(localStorageKey);
 
   if (localTheme) {
-    themeStore.$patch(JSON.parse(localTheme));
+    const localPreferences = JSON.parse(localTheme);
+    delete localPreferences.barButtonNames;
+    themeStore.$patch(localPreferences);
     themeStore.applyThemeDarkMode();
   }
 
