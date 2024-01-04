@@ -18,7 +18,7 @@ const {
 const { resetCurrentTheme, resetShownBarButtons } = themeStore;
 
 const languageStore = useLanguageStore();
-const { language } = languageStore;
+const { language } = storeToRefs(languageStore);
 </script>
 
 <template>

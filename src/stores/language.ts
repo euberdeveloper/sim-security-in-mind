@@ -1,6 +1,7 @@
-import { ref, watchEffect } from 'vue';
+import { ref, watchEffect, watch } from 'vue';
 import { defineStore, storeToRefs } from 'pinia';
 import { useI18n } from 'vue-i18n';
+import { useRoute, useRouter } from 'vue-router';
 
 import config from '@/config';
 
@@ -25,9 +26,17 @@ export function syncLanguage() {
   const languageStore = useLanguageStore();
   const { language } = storeToRefs(languageStore);
 
+  const route = useRoute();
+  const router = useRouter();
   const i18n = useI18n({ useScope: 'global' });
 
-  watchEffect(() => {
+  watch(language, () => {
     i18n.locale.value = language.value;
+    router.push({ params: { locale: language.value } });
+  });
+  watchEffect(() => {
+    if (route.params.locale) {
+      language.value = route.params.locale as SupportedLanguage;
+    }
   });
 }
