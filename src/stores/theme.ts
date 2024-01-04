@@ -8,6 +8,7 @@ import {
   VSlideXTransition,
   VSlideYTransition
 } from 'vuetify/components';
+import { useI18n } from 'vue-i18n';
 
 import { getRandomColor } from '@/utils/colors';
 import { download } from '@/utils/download';
@@ -56,6 +57,7 @@ export interface Language {
 export const useThemeStore = defineStore('theme', () => {
   const theme = useTheme();
   const display = useDisplay();
+  const i18n = useI18n();
 
   const isDark = ref(theme.current.value.dark);
   const currentThemeName = computed(() => (isDark.value ? 'dark' : 'light'));
@@ -104,13 +106,13 @@ export const useThemeStore = defineStore('theme', () => {
     VSlideYTransition
   };
   type TransitionType = keyof typeof transitionMapping;
-  const transitionNames = ref<Record<TransitionType, string>>({
-    VFadeTransition: 'Fade',
-    VScaleTransition: 'Scale',
-    VExpandTransition: 'Expand',
-    VSlideXTransition: 'Slide X',
-    VSlideYTransition: 'Slide Y'
-  });
+  const transitionNames = computed<Record<TransitionType, string>>(() => ({
+    VFadeTransition: i18n.t('preferences.transitions.fade'),
+    VScaleTransition: i18n.t('preferences.transitions.scale'),
+    VExpandTransition: i18n.t('preferences.transitions.expand'),
+    VSlideXTransition: i18n.t('preferences.transitions.slideX'),
+    VSlideYTransition: i18n.t('preferences.transitions.slideY')
+  }));
   const transitionSelectItems = computed(() =>
     Object.entries(transitionNames.value).map(([key, value]) => ({ title: value, value: key }))
   );

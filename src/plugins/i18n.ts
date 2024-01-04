@@ -16,6 +16,7 @@ function i18n() {
   }, {});
 
   return createI18n({
+    legacy: false,
     locale: language.value,
     fallbackLocale: config.i18n.fallbackLocale,
     messages
