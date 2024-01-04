@@ -23,12 +23,12 @@ const isMobile = computed(() => display.mobile.value);
     </template>
     <v-list>
       <v-list-item
-        title="Preferences"
+        :title="$t('preferences.title')"
         prepend-icon="mdi-tune-vertical-variant"
         :to="{ name: 'preferences' }"
       />
       <v-list-item
-        title="Page info"
+        :title="$t('preferences.barButtons.pageInfo')"
         prepend-icon="mdi-information-outline"
         @click="showInfoDialog = true"
         v-if="showInfoButton && !showPageInfo"

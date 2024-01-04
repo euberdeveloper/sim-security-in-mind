@@ -1,0 +1,46 @@
+{
+  "menu": {
+    "search": "Search",
+    "version": "Version"
+  },
+  "preferences": {
+    "title": "Preferences",
+    "colorPalette": {
+      "title": "Color palette",
+      "primary": "Primary",
+      "secondary": "Secondary",
+      "success": "Success",
+      "info": "Info",
+      "warning": "Warning",
+      "error": "Error",
+      "background": "Background",
+      "surface": "Surface"
+    },
+    "transitions": {
+      "title": "Transitions",
+      "fade": "Fade",
+      "scale": "Scale",
+      "expand": "Expand",
+      "slideX": "Slide X",
+      "slideY": "Slide Y"
+    },
+    "barButtons": {
+      "title": "Bar buttons",
+      "darkMode": "Dark Mode",
+      "primaryColor": "Primary Color",
+      "routeTransition": "Route Transition",
+      "pageInfo": "Page Info",
+      "language": "Language"
+    },
+    "language": {
+      "en": "English",
+      "it": "Italian"
+    },
+    "importExport": {
+      "title": "Import and export preferences",
+      "import": "Import",
+      "export": "Export"
+    },
+    "reset": "Reset"
+  }
+}

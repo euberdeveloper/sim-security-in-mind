@@ -156,28 +156,10 @@ export const useThemeStore = defineStore('theme', () => {
     showLanguage
   };
 
-  const languages = ref<Language[]>([
-    {
-      name: 'it',
-      icon: 'it',
-      label: 'Italiano'
-    },
-    { name: 'en', icon: 'gb', label: 'English' }
-  ]);
-  const language = ref('en');
-  const currentLanguage = computed(() => languages.value.find((l) => l.name === language.value));
-
-  const languageComponents = {
-    languages,
-    language,
-    currentLanguage
-  };
-
   return {
     ...paletteComponents,
     ...transitionComponents,
-    ...barButtonsComponents,
-    ...languageComponents
+    ...barButtonsComponents
   };
 });
 

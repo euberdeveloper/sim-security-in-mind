@@ -38,7 +38,7 @@ const shownItems = computed<MenuItem[]>(() => {
       density="compact"
       hide-details
       variant="outlined"
-      label="Search"
+      :label="$t('menu.search')"
       name="search"
       v-model="search"
       clearable

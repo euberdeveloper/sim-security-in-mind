@@ -1,0 +1,46 @@
+{
+  "menu": {
+    "search": "Cerca",
+    "version": "Versione"
+  },
+  "preferences": {
+    "title": "Preferenze",
+    "colorPalette": {
+      "title": "Colori",
+      "primary": "Primario",
+      "secondary": "Secondario",
+      "success": "Succ",
+      "info": "Info",
+      "warning": "Warn",
+      "error": "Errore",
+      "background": "Sfondo",
+      "surface": "Superficie"
+    },
+    "transitions": {
+      "title": "Transizioni",
+      "fade": "Dissolvenza",
+      "scale": "Dimensione",
+      "expand": "Espansione",
+      "slideX": "Scorrimento X",
+      "slideY": "Scorrimento Y"
+    },
+    "barButtons": {
+      "title": "Bottoni della barra",
+      "darkMode": "Notturna",
+      "primaryColor": "Colore primario",
+      "routeTransition": "Transizione schermata",
+      "pageInfo": "Info pagina",
+      "language": "Lingua"
+    },
+    "language": {
+      "en": "Inglese",
+      "it": "Italiano"
+    },
+    "importExport": {
+      "title": "Importa ed esporta preferenze",
+      "import": "Importa",
+      "export": "Esporta"
+    },
+    "reset": "Ripristina"
+  }
+}

@@ -4,5 +4,9 @@ export default {
   gtag: {
     enabled: import.meta.env.VITE_GTAG_ENABLED === 'true',
     id: import.meta.env.VITE_GTAG_ID
+  },
+  i18n: {
+    defaultLocale: import.meta.env.VITE_I18N_DEFAULT_LOCALE,
+    fallbackLocale: import.meta.env.VITE_I18N_FALLBACK_LOCALE
   }
 };

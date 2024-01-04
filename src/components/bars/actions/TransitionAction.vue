@@ -10,7 +10,7 @@ const { setRouteTransition } = themeStore;
 <template>
   <v-menu>
     <template #activator="{ props: menuProps }">
-      <v-tooltip text="Routes transition" location="bottom">
+      <v-tooltip :text="$t('preferences.barButtons.routeTransition')" location="bottom">
         <template #activator="{ props: tooltipProps }">
           <v-btn v-bind="{ ...menuProps, ...tooltipProps }" icon="mdi-transition" />
         </template>

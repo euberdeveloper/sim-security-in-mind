@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 
-import { useThemeStore } from '@/stores/theme';
-const themeStore = useThemeStore();
-const { language, languages } = storeToRefs(themeStore);
+import { useLanguageStore } from '@/stores/language';
+const languageStore = useLanguageStore();
+const { language, languages } = storeToRefs(languageStore);
 </script>
 
 <template>
   <v-menu>
     <template #activator="{ props: menuProps }">
-      <v-tooltip text="Language" location="bottom">
+      <v-tooltip :text="$t('preferences.barButtons.language')" location="bottom">
         <template #activator="{ props: tooltipProps }">
           <v-btn v-bind="{ ...menuProps, ...tooltipProps }" icon="mdi-web" />
         </template>
