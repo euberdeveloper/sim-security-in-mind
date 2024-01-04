@@ -6,7 +6,7 @@ const siteVersion = ref(config.appVersion);
 
 <template>
   <p class="version">
-    <span>Version&nbsp;</span>
+    <span>{{ $t('menu.version') }}</span><span>&nbsp;</span>
     <span class="version-value">{{ siteVersion }}</span>
   </p>
 </template>
