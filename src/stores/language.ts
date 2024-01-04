@@ -1,7 +1,10 @@
 import { ref } from 'vue';
-import { defineStore } from 'pinia';
+import { defineStore, storeToRefs } from 'pinia';
+
+import { useI18n}from 'vue-i18n';
 
 import config from '@/config';
+import { watchEffect } from 'vue';
 
 export type SupportedLanguage = 'it' | 'en';
 
@@ -19,3 +22,15 @@ export const useLanguageStore = defineStore('language', () => {
     language
   };
 });
+
+export function syncWithI18n() {
+  const languageStore = useLanguageStore();
+  const { language } = storeToRefs(languageStore);
+
+  const i18n = useI18n({ useScope: 'global' });
+
+ watchEffect(() => {
+   i18n.locale.value = language.value;
+ }
+  );
+}
