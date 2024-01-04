@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import { RouterView, useRoute } from 'vue-router';
 
 import { syncThemeStoreWithLocalStorage } from '@/stores/theme';
+import { syncLanguage } from '@/stores/language';
 
 import MainBar from '@/components/bars/MainBar.vue';
 import MainMenu from '@/components/menus/MainMenu.vue';
@@ -13,6 +14,7 @@ import PageInfoDialog from '@/components/gears/PageInfoDialog.vue';
 import config from '@/config';
 
 syncThemeStoreWithLocalStorage(`${config.localStoragePrefix}_theme`);
+syncLanguage();
 
 const route = useRoute();
 const title = computed(() => {
