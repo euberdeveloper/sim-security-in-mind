@@ -1,4 +1,4 @@
-import { computed, ref, watchEffect, watch, type ComputedRef } from 'vue';
+import { computed, ref, watchEffect, watch } from 'vue';
 import { defineStore, storeToRefs } from 'pinia';
 import { useTheme, useDisplay, type ThemeDefinition } from 'vuetify';
 import {
@@ -10,7 +10,7 @@ import {
 } from 'vuetify/components';
 import { useI18n } from 'vue-i18n';
 
-import { useLanguageStore } from '@/stores/language';
+import { type SupportedLanguage } from '@/stores/language';
 
 import { getRandomColor } from '@/utils/colors';
 import { download } from '@/utils/download';
@@ -51,7 +51,7 @@ function cloneThemes(theme: Record<string, ThemeDefinition>): Record<string, The
 }
 
 export interface Language {
-  name: string;
+  name: SupportedLanguage;
   icon: string;
   label: string;
 }
@@ -60,7 +60,6 @@ export const useThemeStore = defineStore('theme', () => {
   const theme = useTheme();
   const display = useDisplay();
   const i18n = useI18n();
-  const languageStore = useLanguageStore();
 
   const isDark = ref(theme.current.value.dark);
   const currentThemeName = computed(() => (isDark.value ? 'dark' : 'light'));
