@@ -11,7 +11,9 @@ const {
   routeTransition,
   transitionSelectItems,
   barButtonNames,
-  shownBarButtons
+  shownBarButtons,
+  languages,
+  language
 } = storeToRefs(themeStore);
 const { resetCurrentTheme, resetShownBarButtons } = themeStore;
 </script>
@@ -63,13 +65,8 @@ const { resetCurrentTheme, resetShownBarButtons } = themeStore;
         <h3>Transitions</h3>
       </v-col>
       <v-col>
-        <v-select
-          v-model="routeTransition"
-          :items="transitionSelectItems"
-          item-title="title"
-          item-value="value"
-          label="Route transition"
-        />
+        <v-select v-model="routeTransition" :items="transitionSelectItems" item-title="title" item-value="value"
+          label="Route transition" />
       </v-col>
     </v-row>
     <v-row>
@@ -77,17 +74,22 @@ const { resetCurrentTheme, resetShownBarButtons } = themeStore;
         <h3>Bar buttons</h3>
       </v-col>
       <v-col v-for="(name, value) in barButtonNames" :key="value" :cols="6" :md="4" :lg="3">
-        <v-switch
-          v-model="shownBarButtons"
-          :label="name"
-          :value="value"
-          color="secondary"
-          hide-details
-          inset
-        />
+        <v-switch v-model="shownBarButtons" :label="name" :value="value" color="secondary" hide-details inset />
       </v-col>
       <v-col :cols="12">
         <v-btn color="warning" @click="resetShownBarButtons">Reset</v-btn>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col :cols="12">
+        <h3>Language</h3>
+      </v-col>
+      <v-col>
+        <v-select v-model="language" :items="languages" item-title="label" item-value="name" label="Language">
+          <template v-slot:item="{ props, item }">
+            <v-list-item v-bind="props" :prepend-icon="`fi:${item.raw.icon}`" :title="item.title" />
+          </template>
+        </v-select>
       </v-col>
     </v-row>
     <v-row>

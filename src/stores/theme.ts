@@ -47,6 +47,12 @@ function cloneThemes(theme: Record<string, ThemeDefinition>): Record<string, The
   };
 }
 
+export interface Language {
+  name: string;
+  icon: string;
+  label: string;
+}
+
 export const useThemeStore = defineStore('theme', () => {
   const theme = useTheme();
   const display = useDisplay();
@@ -150,7 +156,29 @@ export const useThemeStore = defineStore('theme', () => {
     showLanguage
   };
 
-  return { ...paletteComponents, ...transitionComponents, ...barButtonsComponents };
+  const languages = ref<Language[]>([
+    {
+      name: 'it',
+      icon: 'it',
+      label: 'Italiano'
+    },
+    { name: 'en', icon: 'gb', label: 'English' }
+  ]);
+  const language = ref('en');
+  const currentLanguage = computed(() => languages.value.find((l) => l.name === language.value));
+
+  const languageComponents = {
+    languages,
+    language,
+    currentLanguage
+  };
+
+  return {
+    ...paletteComponents,
+    ...transitionComponents,
+    ...barButtonsComponents,
+    ...languageComponents
+  };
 });
 
 export function syncThemeStoreWithLocalStorage(localStorageKey: string) {
