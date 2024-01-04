@@ -131,11 +131,11 @@ export const useThemeStore = defineStore('theme', () => {
   };
 
   const barButtonNames = ref<Record<string, string>>({
-    darkMode: 'Dark Mode',
-    primaryColor: 'Primary Color',
-    routeTransition: 'Route Transition',
-    pageInfo: 'Page Info',
-    language: 'Language'
+    darkMode: i18n.t('preferences.barButtons.darkMode'),
+    primaryColor: i18n.t('preferences.barButtons.primaryColor'),
+    routeTransition: i18n.t('preferences.barButtons.routeTransition'),
+    pageInfo: i18n.t('preferences.barButtons.pageInfo'),
+    language: i18n.t('preferences.barButtons.language')
   });
   const defaultShownBarButtons = () =>
     display.mobile.value
