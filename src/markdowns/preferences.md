@@ -60,5 +60,6 @@ The info button is used to display information about the current page. The infor
 ## Import and export
 
 The preferences can be imported and exported as json files. The import and export buttons are located in the preferences page.
-* To export a file, just click on the export button and the json file will be downloaded.
-* To import a file, click on the import button and select the json file to import, the current preferences will be immediately overwritten.
+
+- To export a file, just click on the export button and the json file will be downloaded.
+- To import a file, click on the import button and select the json file to import, the current preferences will be immediately overwritten.

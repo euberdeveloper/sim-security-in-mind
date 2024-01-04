@@ -5,9 +5,14 @@ import { createVuetify } from 'vuetify';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 
+import { fi } from './flags/flagIcons';
+
 const vuetify = createVuetify({
   icons: {
-    defaultSet: 'mdi'
+    defaultSet: 'mdi',
+    sets: {
+      fi
+    }
   },
   components,
   directives

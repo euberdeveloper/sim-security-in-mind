@@ -15,7 +15,12 @@ const dialogWidth = computed(() => (isMobile.value ? 'auto' : 650));
 </script>
 
 <template>
-  <CardDialog title="Page information" :width="dialogWidth" :fullscreen="isMobile" v-model="showInfoDialog">
+  <CardDialog
+    title="Page information"
+    :width="dialogWidth"
+    :fullscreen="isMobile"
+    v-model="showInfoDialog"
+  >
     <div v-markdown="infoText" class="markdown-container"></div>
   </CardDialog>
 </template>

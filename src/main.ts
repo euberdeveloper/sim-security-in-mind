@@ -5,8 +5,6 @@ import vuetify from '@/plugins/vuetify';
 import { useAnalytics } from '@/plugins/analytics';
 import { vMarkdown } from '@/directives/VMarkdown';
 
-import '@/plugins/flags';
-
 import App from './App.vue';
 import router from './router';
 import config from './config';

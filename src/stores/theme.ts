@@ -150,7 +150,7 @@ export const useThemeStore = defineStore('theme', () => {
     showLanguage
   };
 
-  return { ...paletteComponents, ...transitionComponents, ...barButtonsComponents }
+  return { ...paletteComponents, ...transitionComponents, ...barButtonsComponents };
 });
 
 export function syncThemeStoreWithLocalStorage(localStorageKey: string) {
@@ -185,7 +185,7 @@ export function importPreferences(fileList: FileList | null) {
   if (fileList && fileList.length > 0) {
     const file = fileList[0];
     const reader = new FileReader();
-    reader.readAsText(file); 
+    reader.readAsText(file);
     reader.onload = () => {
       const jsonPreferences = JSON.parse(reader.result as string);
       const themeStore = useThemeStore();

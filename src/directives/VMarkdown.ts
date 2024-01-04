@@ -3,18 +3,18 @@ import markdownit from 'markdown-it';
 import type MarkdownIt from 'markdown-it';
 
 export interface PluginSimpleItem {
-  type: 'simple',
-  plugin: MarkdownIt.PluginSimple
+  type: 'simple';
+  plugin: MarkdownIt.PluginSimple;
 }
 export interface PluginWithOptionsItem<T> {
-  type: 'with-options',
-  plugin: MarkdownIt.PluginWithOptions<T>,
-  options: T
+  type: 'with-options';
+  plugin: MarkdownIt.PluginWithOptions<T>;
+  options: T;
 }
 export interface PluginWithParamsItem {
-  type: 'with-params',
-  plugin: MarkdownIt.PluginWithParams,
-  params: any[]
+  type: 'with-params';
+  plugin: MarkdownIt.PluginWithParams;
+  params: any[];
 }
 export type PluginItem = PluginSimpleItem | PluginWithOptionsItem<any> | PluginWithParamsItem;
 
@@ -35,7 +35,7 @@ function getVMarkdown(options: MarkdownIt.Options = {}, plugins: PluginItem[] = 
     }
   }
 
-  function render(value: string)  {
+  function render(value: string) {
     return md.render(value);
   }
 
@@ -47,7 +47,6 @@ function getVMarkdown(options: MarkdownIt.Options = {}, plugins: PluginItem[] = 
       el.innerHTML = render(binding.value);
     }
   };
-
 }
 
 export const vMarkdown = getVMarkdown();
