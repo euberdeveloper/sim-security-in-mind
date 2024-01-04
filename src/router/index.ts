@@ -23,7 +23,7 @@ const router = createRouter({
           name: 'mangle-type',
           component: MangleTypeView,
           meta: {
-            title: 'Mangle Type',
+            title: 'mangle-type',
             info: 'mangle-type'
           }
         },
@@ -32,7 +32,7 @@ const router = createRouter({
           name: 'mangle-class-identifier',
           component: MangleClassIdentifierView,
           meta: {
-            title: 'Mangle Class Identifier',
+            title: 'mangle-class-identifier',
             info: 'mangle-class-identifier'
           }
         },
@@ -41,7 +41,7 @@ const router = createRouter({
           name: 'mangle-class-method',
           component: MangleClassMethodView,
           meta: {
-            title: 'Mangle Class Method',
+            title: 'mangle-class-method',
             info: 'mangle-method'
           }
         },
@@ -50,7 +50,7 @@ const router = createRouter({
           name: 'mangle-class-constructor',
           component: MangleClassConstructorView,
           meta: {
-            title: 'Mangle Class Constructor',
+            title: 'mangle-class-constructor',
             info: 'mangle-constructor'
           }
         },
@@ -59,7 +59,7 @@ const router = createRouter({
           name: 'preferences',
           component: PreferencesView,
           meta: {
-            title: 'Preferences',
+            title: 'preferences',
             info: 'preferences'
           }
         }

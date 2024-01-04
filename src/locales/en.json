@@ -1,7 +1,20 @@
 {
+  "routes": {
+    "mangle-type": "Type",
+    "mangle-class-identifier": "Class Identifier",
+    "mangle-class-method": "Method",
+    "mangle-class-constructor": "Constructor",
+    "preferences": "Preferences"
+  },
   "menu": {
     "search": "Search",
-    "version": "Version"
+    "version": "Version",
+    "pages": {
+      "mangle-type": "Mangle type",
+      "mangle-class-identifier": "Mangle class identifier",
+      "mangle-class-method": "Mangle class method",
+      "mangle-class-constructor": "Mangle class constructor"
+    }
   },
   "preferences": {
     "title": "Preferences",

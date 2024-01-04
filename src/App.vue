@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { RouterView, useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 
 import { syncThemeStoreWithLocalStorage } from '@/stores/theme';
 import { syncLanguage } from '@/stores/language';
@@ -17,8 +18,12 @@ syncThemeStoreWithLocalStorage(`${config.localStoragePrefix}_theme`);
 syncLanguage();
 
 const route = useRoute();
+const { t } = useI18n();
+const routeId = computed(() => {
+  return route.name as string ?? '';
+});
 const title = computed(() => {
-  return route.meta.title ?? '';
+  return t(`routes.${route.meta.title}`) ?? '';
 });
 </script>
 
@@ -28,7 +33,7 @@ const title = computed(() => {
     <MainMenu />
 
     <v-main>
-      <CardLayout :title="title">
+      <CardLayout :id="routeId" :title="title">
         <RouterView />
       </CardLayout>
     </v-main>

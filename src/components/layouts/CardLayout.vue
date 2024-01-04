@@ -6,6 +6,7 @@ const { routeTransition } = storeToRefs(useThemeStore());
 
 defineProps<{
   title: string;
+  id: string;
 }>();
 </script>
 
@@ -14,7 +15,7 @@ defineProps<{
     <v-row align="center" justify="center">
       <v-col cols="12" sm="10">
         <component :is="routeTransition" hide-on-leave>
-          <v-card :key="title">
+          <v-card :key="id">
             <v-toolbar color="primary" dark>
               <v-toolbar-title>{{ title }}</v-toolbar-title>
               <v-spacer />
