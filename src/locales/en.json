@@ -55,5 +55,26 @@
       "export": "Export"
     },
     "reset": "Reset"
+  },
+  "views": {
+    "mangle-type": {
+      "type": "Type",
+      "mangled-type": "Mangled type"
+    },
+    "mangle-class-constructor": {
+      "class-constructor": "Class constructor",
+      "mangled-signature": "Mangled signature",
+      "mangled-definition": "Mangled definition"
+    },
+    "mangle-class-method": {
+      "class-method": "Class method",
+      "mangled-signature": "Mangled signature",
+      "mangled-definition": "Mangled definition"
+    },
+    "mangle-class-identifier": {
+      "class-identifier": "Class identifier",
+      "mangled-identifier": "Mangled identifier",
+      "mangled-definition": "Mangled definition"
+    }
   }
 }

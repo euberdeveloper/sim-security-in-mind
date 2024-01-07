@@ -55,5 +55,26 @@
       "export": "Esporta"
     },
     "reset": "Ripristina"
+  },
+  "views": {
+    "mangle-type": {
+      "type": "Tipo",
+      "mangled-type": "Tipo tradotto"
+    },
+    "mangle-class-constructor": {
+      "class-constructor": "Costruttore",
+      "mangled-signature": "Firma",
+      "mangled-definition": "Definizione"
+    },
+    "mangle-class-method": {
+      "class-method": "Metodo",
+      "mangled-signature": "Firma",
+      "mangled-definition": "Definizione"
+    },
+    "mangle-class-identifier": {
+      "class-identifier": "Identificatore classe",
+      "mangled-identifier": "Identificatore",
+      "mangled-definition": "Definizione"
+    }
   }
 }

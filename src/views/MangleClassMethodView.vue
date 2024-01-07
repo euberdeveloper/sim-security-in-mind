@@ -33,7 +33,7 @@ const { displayedMangled: displayedMangledMethodDefinition } = useMangling(
     <v-text-field
       v-model="classMethod"
       type="text"
-      label="Class method"
+      :label="$t('views.mangle-class-method.class-method')"
       variant="outlined"
       density="compact"
       clearable
@@ -42,7 +42,7 @@ const { displayedMangled: displayedMangledMethodDefinition } = useMangling(
     <v-text-field
       :value="displayedMangledMethodSignature"
       type="text"
-      label="Mangled signature"
+      :label="$t('views.mangle-class-method.mangled-signature')"
       variant="outlined"
       density="compact"
       readonly
@@ -54,7 +54,7 @@ const { displayedMangled: displayedMangledMethodDefinition } = useMangling(
     <v-textarea
       :model-value="displayedMangledMethodDefinition"
       type="text"
-      label="Mangled definition"
+      :label="$t('views.mangle-class-method.mangled-definition')"
       variant="outlined"
       density="compact"
       readonly

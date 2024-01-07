@@ -33,7 +33,7 @@ const { displayedMangled: displayedMangledClassDefinition } = useMangling(
     <v-text-field
       v-model="classIdentifier"
       type="text"
-      label="Class identifier"
+      :label="$t('views.mangle-class-identifier.class-identifier')"
       variant="outlined"
       density="compact"
       clearable
@@ -42,7 +42,7 @@ const { displayedMangled: displayedMangledClassDefinition } = useMangling(
     <v-text-field
       :value="displayedMangledClassIdentifier"
       type="text"
-      label="Mangled identifier"
+      :label="$t('views.mangle-class-identifier.mangled-identifier')"
       variant="outlined"
       density="compact"
       readonly
@@ -54,7 +54,7 @@ const { displayedMangled: displayedMangledClassDefinition } = useMangling(
     <v-textarea
       :model-value="displayedMangledClassDefinition"
       type="text"
-      label="Mangled definition"
+      :label="$t('views.mangle-class-identifier.mangled-definition')"
       variant="outlined"
       density="compact"
       readonly

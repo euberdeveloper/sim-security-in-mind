@@ -17,7 +17,7 @@ const { displayedMangled } = useMangling(type, isInputValid, mangleType);
     <v-text-field
       v-model="type"
       type="text"
-      label="Type"
+      :label="$t('views.mangle-type.type')"
       variant="outlined"
       density="compact"
       clearable
@@ -26,7 +26,7 @@ const { displayedMangled } = useMangling(type, isInputValid, mangleType);
     <v-text-field
       :value="displayedMangled"
       type="text"
-      label="Mangled type"
+      :label="$t('views.mangle-type.mangled-type')"
       variant="outlined"
       density="compact"
       readonly

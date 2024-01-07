@@ -33,7 +33,7 @@ const { displayedMangled: displayedMangledConstructorDefinition } = useMangling(
     <v-text-field
       v-model="classConstructor"
       type="text"
-      label="Class constructor"
+      :label="$t('views.mangle-class-constructor.class-constructor')"
       variant="outlined"
       density="compact"
       clearable
@@ -42,7 +42,7 @@ const { displayedMangled: displayedMangledConstructorDefinition } = useMangling(
     <v-text-field
       :value="displayedMangledConstructorSignature"
       type="text"
-      label="Mangled signature"
+      :label="$t('views.mangle-class-constructor.mangled-signature')"
       variant="outlined"
       density="compact"
       readonly
@@ -54,7 +54,7 @@ const { displayedMangled: displayedMangledConstructorDefinition } = useMangling(
     <v-textarea
       :model-value="displayedMangledConstructorDefinition"
       type="text"
-      label="Mangled definition"
+      :label="$t('views.mangle-class-constructor.mangled-definition')"
       variant="outlined"
       density="compact"
       readonly
