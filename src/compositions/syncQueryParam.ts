@@ -9,17 +9,21 @@ export function syncQueryParam<T>(
   serializer: (value: T) => string | null | undefined,
   deserializer: (value: string) => T,
 ) {
-  function updateRoute(value: T) {
-    router.replace({ query: { ...route.query, [queryParam]: serializer(value) } });
+  function updateRouteQuery() {
+    router.replace({ query: { ...route.query, [queryParam]: serializer(variable.value) } });
   }
 
-  if (route.query[queryParam]) {
+  if (route.query[queryParam] === null) {
     variable.value = deserializer(route.query[queryParam] as string);
   }
-  updateRoute(variable.value);
+
   watch(variable, () => {
-    updateRoute(variable.value);
+    updateRouteQuery();
   });
+
+  return {
+    updateRouteQuery,
+  };
 }
 
 export function syncStringQueryParam(

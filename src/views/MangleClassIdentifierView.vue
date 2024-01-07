@@ -29,7 +29,8 @@ const { displayedMangled: displayedMangledClassDefinition } = useMangling(
   mangleClassDefinition
 );
 
-syncStringQueryParam(classIdentifier, useRouter(), useRoute(), 'mangleClassIdentifier');
+const {updateRouteQuery} =syncStringQueryParam(classIdentifier, useRouter(), useRoute(), 'mangleClassIdentifier');
+updateRouteQuery()
 </script>
 
 <template>

@@ -13,7 +13,8 @@ const { type } = storeToRefs(useManglersStore());
 const { isInputValid, mangledValidationRule } = useManglingValidation(type, validateType);
 const { displayedMangled } = useMangling(type, isInputValid, mangleType);
 
-syncStringQueryParam(type, useRouter(), useRoute(), 'mangleType');
+const {updateRouteQuery} =syncStringQueryParam(type, useRouter(), useRoute(), 'mangleType');
+updateRouteQuery();
 </script>
 
 <template>

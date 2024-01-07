@@ -1,6 +1,8 @@
-import { computed, ref, watch } from 'vue';
+import { computed, ref } from 'vue';
 import { defineStore, storeToRefs } from 'pinia';
 import { useRoute , useRouter} from 'vue-router';
+
+import { syncBooleanQueryParam } from '@/compositions/syncQueryParam';
 
 export const usePageInfoStore = defineStore('page-info', () => {
   const infoText = ref<string | null>(null);
@@ -11,24 +13,12 @@ export const usePageInfoStore = defineStore('page-info', () => {
 });
 
 
-export function syncInfoQueryParam() {
+export function syncInfoQueryParam(delay = 200) {
   const pageInfoStore = usePageInfoStore();
-  const {showInfoButton,
+  const {
     showInfoDialog} = storeToRefs(pageInfoStore);
+    const router = useRouter();
+    const route = useRoute();
 
-  const router = useRouter();
-  const route = useRoute();
-
-  watch([showInfoButton, () => route.query.pageInfo], () => {
-    showInfoDialog.value = showInfoButton && route.query.pageInfo === 'true';
-  });
-
-  watch(showInfoDialog, (value) => {
-    if (value) {
-      router.replace({ query: { ...route.query, pageInfo: 'true' } });
-    }
-    else {
-      router.replace({ query: { ...route.query, pageInfo: undefined } });
-    }
-  });
+    setTimeout(() => syncBooleanQueryParam(showInfoDialog, router, route, 'pageInfo'), delay);
 }
