@@ -5,9 +5,11 @@ import {
   validateConstructorSignature
 } from 'lifeware-java-mangler';
 import { storeToRefs } from 'pinia';
+import { useRoute, useRouter } from 'vue-router';
 
 import { useClipboard } from '@/compositions/clipboard';
 import { useMangling, useManglingValidation } from '@/compositions/mangler';
+import { syncQueryParam } from '@/compositions/syncQueryParam';
 import { useManglersStore } from '@/stores/manglers';
 
 const { copyToClipboard } = useClipboard();
@@ -26,6 +28,8 @@ const { displayedMangled: displayedMangledConstructorDefinition } = useMangling(
   isInputValid,
   mangleConstructorDefinition
 );
+
+syncQueryParam(classConstructor, useRouter(), useRoute(), 'mangleClassConstructor');
 </script>
 
 <template>
