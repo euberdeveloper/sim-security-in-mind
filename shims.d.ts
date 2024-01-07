@@ -1,12 +1,13 @@
 import 'vue-router';
 import { type MarkdownKey } from '@/markdowns';
+import { type TitleDescriptor } from '@/utils/pageTitle';
 
 // To ensure it is treated as a module, add at least one `export` statement
 export {}
 
 declare module 'vue-router' {
   interface RouteMeta {
-    title: string;
+    title: TitleDescriptor | string;
     info?: MarkdownKey;
   }
 }

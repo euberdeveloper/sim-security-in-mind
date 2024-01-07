@@ -4,7 +4,8 @@
     "mangle-class-identifier": "Identificatore classe",
     "mangle-class-method": "Metodo",
     "mangle-class-constructor": "Costruttore",
-    "preferences": "Preferenze"
+    "preferences": "Preferenze",
+    "not-found": "Pagina non trovata"
   },
   "menu": {
     "search": "Cerca",
@@ -84,6 +85,10 @@
       "class-identifier": "Identificatore classe",
       "mangled-identifier": "Identificatore",
       "mangled-definition": "Definizione"
+    },
+    "not-found": {
+      "text": "La pagina {path} non è stata trovata",
+      "go-back": "Torna alla home"
     }
   }
 }

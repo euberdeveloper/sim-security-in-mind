@@ -32,7 +32,7 @@ const markdowns = {
     it: MangleMethodIt,
     en: MangleMethodEn
   },
-  'preferences': {
+  preferences: {
     it: PreferencesIt,
     en: PreferencesEn
   }

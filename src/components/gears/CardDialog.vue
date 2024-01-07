@@ -26,7 +26,9 @@ defineProps<{
 
         <v-card-actions class="pa-3">
           <v-spacer></v-spacer>
-          <v-btn color="success" variant="outlined" @click="isActive.value = false">{{$t('notifications.actions.close')}}</v-btn>
+          <v-btn color="success" variant="outlined" @click="isActive.value = false">{{
+            $t('notifications.actions.close')
+          }}</v-btn>
           <v-spacer></v-spacer>
         </v-card-actions>
       </v-card>

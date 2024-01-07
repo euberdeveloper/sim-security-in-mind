@@ -4,7 +4,8 @@
     "mangle-class-identifier": "Class Identifier",
     "mangle-class-method": "Method",
     "mangle-class-constructor": "Constructor",
-    "preferences": "Preferences"
+    "preferences": "Preferences",
+    "not-found": "Not found"
   },
   "menu": {
     "search": "Search",
@@ -84,6 +85,10 @@
       "class-identifier": "Class identifier",
       "mangled-identifier": "Mangled identifier",
       "mangled-definition": "Mangled definition"
+    },
+    "not-found": {
+      "text": "The page {path} has not been found",
+      "go-back": "Back to home"
     }
   }
 }

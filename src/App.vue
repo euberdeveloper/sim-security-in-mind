@@ -1,14 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { RouterView,useRoute } from 'vue-router';
-import { useI18n } from 'vue-i18n';
-
 import { syncThemeStoreWithLocalStorage } from '@/stores/theme';
 import { syncLanguage } from '@/stores/language';
 
 import MainBar from '@/components/bars/MainBar.vue';
 import MainMenu from '@/components/menus/MainMenu.vue';
-import CardLayout from '@/components/layouts/CardLayout.vue';
 import SnackbarNotifications from '@/components/gears/SnackbarNotifications.vue';
 import PageInfoDialog from '@/components/gears/PageInfoDialog.vue';
 
@@ -16,15 +11,6 @@ import config from '@/config';
 
 syncThemeStoreWithLocalStorage(`${config.localStoragePrefix}_theme`);
 syncLanguage();
-
-const { t } = useI18n();
-const route = useRoute();
-const routeId = computed(() => {
-  return route.name as string ?? '';
-});
-const title = computed(() => {
-  return t(`routes.${route.meta.title}`) ?? '';
-});
 </script>
 
 <template>
@@ -33,9 +19,7 @@ const title = computed(() => {
     <MainMenu />
 
     <v-main>
-      <CardLayout :id="routeId" :title="title">
-        <RouterView />
-      </CardLayout>
+      <router-view />
     </v-main>
 
     <SnackbarNotifications />

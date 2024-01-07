@@ -6,9 +6,10 @@ import { useRoute, useRouter } from 'vue-router';
 import config from '@/config';
 
 export type SupportedLanguage = 'it' | 'en';
+export const availableLanguages: SupportedLanguage[] = ['it', 'en'];
 
 export const useLanguageStore = defineStore('language', () => {
-  const supportedLanguages = ref<SupportedLanguage[]>(['it', 'en']);
+  const supportedLanguages = ref<SupportedLanguage[]>(availableLanguages);
 
   const language = ref<SupportedLanguage>(
     config.i18n.defaultLocale === 'local'

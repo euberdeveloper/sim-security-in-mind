@@ -7,7 +7,7 @@ export function syncQueryParam<T>(
   route: RouteLocationNormalized,
   queryParam: string,
   serializer: (value: T) => string | null | undefined,
-  deserializer: (value: string) => T,
+  deserializer: (value: string) => T
 ) {
   function updateRouteQuery() {
     router.replace({ query: { ...route.query, [queryParam]: serializer(variable.value) } });
@@ -22,7 +22,7 @@ export function syncQueryParam<T>(
   });
 
   return {
-    updateRouteQuery,
+    updateRouteQuery
   };
 }
 
@@ -38,7 +38,7 @@ export function syncStringQueryParam(
     route,
     queryParam,
     (value) => value || undefined,
-    (value) => value,
+    (value) => value
   );
 }
 
@@ -53,7 +53,7 @@ export function syncBooleanQueryParam(
     router,
     route,
     queryParam,
-    (value) => value ? null : undefined,
-    (value) => value !== undefined,
+    (value) => (value ? null : undefined),
+    (value) => value !== undefined
   );
 }
