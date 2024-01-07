@@ -9,7 +9,7 @@ import { useRoute, useRouter } from 'vue-router';
 
 import { useClipboard } from '@/compositions/clipboard';
 import { useMangling, useManglingValidation } from '@/compositions/mangler';
-import { syncQueryParam } from '@/compositions/syncQueryParam';
+import { syncStringQueryParam } from '@/compositions/syncQueryParam';
 import { useManglersStore } from '@/stores/manglers';
 
 const { copyToClipboard } = useClipboard();
@@ -29,7 +29,7 @@ const { displayedMangled: displayedMangledConstructorDefinition } = useMangling(
   mangleConstructorDefinition
 );
 
-syncQueryParam(classConstructor, useRouter(), useRoute(), 'mangleClassConstructor');
+syncStringQueryParam(classConstructor, useRouter(), useRoute(), 'mangleClassConstructor');
 </script>
 
 <template>

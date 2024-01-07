@@ -5,7 +5,7 @@ import { useRoute, useRouter } from 'vue-router';
 
 import { useClipboard } from '@/compositions/clipboard';
 import { useMangling, useManglingValidation } from '@/compositions/mangler';
-import { syncQueryParam } from '@/compositions/syncQueryParam';
+import { syncStringQueryParam } from '@/compositions/syncQueryParam';
 import { useManglersStore } from '@/stores/manglers';
 
 const { copyToClipboard } = useClipboard();
@@ -13,7 +13,7 @@ const { type } = storeToRefs(useManglersStore());
 const { isInputValid, mangledValidationRule } = useManglingValidation(type, validateType);
 const { displayedMangled } = useMangling(type, isInputValid, mangleType);
 
-syncQueryParam(type, useRouter(), useRoute(), 'mangleType');
+syncStringQueryParam(type, useRouter(), useRoute(), 'mangleType');
 </script>
 
 <template>
