@@ -2,12 +2,12 @@
 import { computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useDisplay } from 'vuetify';
-import { useMenuStore } from '@/stores/menu';
+import { usePageInfoStore } from '@/stores/pageInfo';
 
 import CardDialog from '@/components/gears/CardDialog.vue';
 
-const menuStore = useMenuStore();
-const { infoText, showInfoDialog } = storeToRefs(menuStore);
+const pageInfoStore = usePageInfoStore();
+const { infoText, showInfoDialog } = storeToRefs(pageInfoStore);
 
 const display = useDisplay();
 const isMobile = computed(() => display.smAndDown.value);

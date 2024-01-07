@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { useMenuStore } from '@/stores/menu';
+import { usePageInfoStore } from '@/stores/pageInfo';
 
-const menuStore = useMenuStore();
-const { showInfoButton, showInfoDialog } = storeToRefs(menuStore);
+const pageInfoStore = usePageInfoStore();
+const { showInfoButton, showInfoDialog } = storeToRefs(pageInfoStore);
 </script>
 
 <template>

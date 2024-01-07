@@ -2,12 +2,12 @@
 import { computed } from 'vue';
 import { useDisplay } from 'vuetify';
 
-import { useMenuStore } from '@/stores/menu';
+import { usePageInfoStore } from '@/stores/pageInfo';
 import { useThemeStore } from '@/stores/theme';
 import { storeToRefs } from 'pinia';
 
-const menuStore = useMenuStore();
-const { showInfoDialog, showInfoButton } = storeToRefs(menuStore);
+const pageInfoStore = usePageInfoStore();
+const { showInfoButton, showInfoDialog } = storeToRefs(pageInfoStore);
 
 const themeStore = useThemeStore();
 const { showPageInfo } = storeToRefs(themeStore);
