@@ -13,12 +13,12 @@ export const usePageInfoStore = defineStore('page-info', () => {
 });
 
 
-export function syncInfoQueryParam(delay = 200) {
+export function syncInfoQueryParam() {
   const pageInfoStore = usePageInfoStore();
   const {
     showInfoDialog} = storeToRefs(pageInfoStore);
     const router = useRouter();
     const route = useRoute();
 
-    setTimeout(() => syncBooleanQueryParam(showInfoDialog, router, route, 'pageInfo'), delay);
+   syncBooleanQueryParam(showInfoDialog, router, route, 'pageInfo');
 }
