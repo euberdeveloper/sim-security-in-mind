@@ -1,8 +1,17 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useDisplay } from 'vuetify';
+
+const display = useDisplay();
+const isMobile = computed(() => display.smAndDown.value);
+</script>
+
 <template>
   <v-container>
     <v-row>
       <v-col :cols="12">
-        <h2 class="my-4 text-center">{{ $t('views.not-found.text', { path: $route.path }) }}</h2>
+        <h5 v-if="isMobile" class="my-4 text-center">{{ $t('views.not-found.text', { path: $route.path }) }}</h5>
+        <h2 v-else class="my-4 text-center">{{ $t('views.not-found.text', { path: $route.path }) }}</h2>
         <img class="my-4 image" src="@/assets/not_found.png" alt="not found" />
       </v-col>
       <v-col class="d-flex justify-center">
