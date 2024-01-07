@@ -3,7 +3,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { localeGuard } from '@/router/guards/locale';
 import { infoGuard } from '@/router/guards/info';
 
-import LocaleView from '@/views/LocaleView.vue';
 import MangleTypeView from '@/views/MangleTypeView.vue';
 import MangleClassIdentifierView from '@/views/MangleClassIdentifierView.vue';
 import MangleClassMethodView from '@/views/MangleClassMethodView.vue';
@@ -15,7 +14,6 @@ const router = createRouter({
   routes: [
     {
       path: '/:locale?',
-      component: LocaleView,
       redirect: { name: 'mangle-type' },
       children: [
         {
