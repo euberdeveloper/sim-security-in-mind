@@ -10,7 +10,7 @@ const isMobile = computed(() => display.smAndDown.value);
   <v-container>
     <v-row>
       <v-col :cols="12">
-        <h4 v-if="isMobile" class="my-4 text-center">{{ $t('views.not-found.text', { path: $route.path }) }}</h4>
+        <h3 v-if="isMobile" class="my-4 text-center">{{ $t('views.not-found.text', { path: $route.path }) }}</h3>
         <h2 v-else class="my-4 text-center">{{ $t('views.not-found.text', { path: $route.path }) }}</h2>
         <img class="my-4 image" src="@/assets/not_found.png" alt="not found" />
       </v-col>
