@@ -56,6 +56,15 @@
     },
     "reset": "Reset"
   },
+  "notifications": {
+    "clipboard": {
+      "success": "Text copied to clipboard",
+      "error": "Failed to copy to clipboard"
+    },
+    "actions": {
+      "close": "Close"
+    }
+  },
   "views": {
     "mangle-type": {
       "type": "Type",

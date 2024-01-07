@@ -56,6 +56,15 @@
     },
     "reset": "Ripristina"
   },
+  "notifications": {
+    "clipboard": {
+      "success": "Testo copiato negli appunti",
+      "error": "Testo non copiato negli appunti"
+    },
+    "actions": {
+      "close": "Chiudi"
+    }
+  },
   "views": {
     "mangle-type": {
       "type": "Tipo",
