@@ -1,5 +1,6 @@
-import { computed, ref } from 'vue';
-import { defineStore } from 'pinia';
+import { computed, ref, watch } from 'vue';
+import { defineStore, storeToRefs } from 'pinia';
+import { useRoute , useRouter} from 'vue-router';
 
 export const usePageInfoStore = defineStore('page-info', () => {
   const infoText = ref<string | null>(null);
@@ -8,3 +9,26 @@ export const usePageInfoStore = defineStore('page-info', () => {
 
   return { infoText, showInfoButton, showInfoDialog };
 });
+
+
+export function syncInfoQueryParam() {
+  const pageInfoStore = usePageInfoStore();
+  const {showInfoButton,
+    showInfoDialog} = storeToRefs(pageInfoStore);
+
+  const router = useRouter();
+  const route = useRoute();
+
+  watch([showInfoButton, () => route.query.pageInfo], () => {
+    showInfoDialog.value = showInfoButton && route.query.pageInfo === 'true';
+  });
+
+  watch(showInfoDialog, (value) => {
+    if (value) {
+      router.push({ query: { ...route.query, pageInfo: 'true' } });
+    }
+    else {
+      router.push({ query: { ...route.query, pageInfo: undefined } });
+    }
+  });
+}

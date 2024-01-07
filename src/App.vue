@@ -5,6 +5,7 @@ import { useI18n } from 'vue-i18n';
 
 import { syncThemeStoreWithLocalStorage } from '@/stores/theme';
 import { syncLanguage } from '@/stores/language';
+import { syncInfoQueryParam } from '@/stores/pageInfo';
 
 import MainBar from '@/components/bars/MainBar.vue';
 import MainMenu from '@/components/menus/MainMenu.vue';
@@ -16,6 +17,7 @@ import config from '@/config';
 
 syncThemeStoreWithLocalStorage(`${config.localStoragePrefix}_theme`);
 syncLanguage();
+syncInfoQueryParam();
 
 const route = useRoute();
 const { t } = useI18n();
