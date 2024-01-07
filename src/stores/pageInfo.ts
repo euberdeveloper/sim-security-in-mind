@@ -25,10 +25,10 @@ export function syncInfoQueryParam() {
 
   watch(showInfoDialog, (value) => {
     if (value) {
-      router.push({ query: { ...route.query, pageInfo: 'true' } });
+      router.replace({ query: { ...route.query, pageInfo: 'true' } });
     }
     else {
-      router.push({ query: { ...route.query, pageInfo: undefined } });
+      router.replace({ query: { ...route.query, pageInfo: undefined } });
     }
   });
 }
