@@ -29,7 +29,7 @@ updateRouteQuery();
       :rules="[mangledValidationRule]"
     />
     <v-text-field
-      :value="displayedMangled"
+      :model-value="displayedMangled"
       type="text"
       :label="$t('views.mangle-type.mangled-type')"
       variant="outlined"

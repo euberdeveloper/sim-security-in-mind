@@ -50,7 +50,7 @@ updateRouteQuery();
       :rules="[mangledValidationRule]"
     />
     <v-text-field
-      :value="displayedMangledClassIdentifier"
+      :model-value="displayedMangledClassIdentifier"
       type="text"
       :label="$t('views.mangle-class-identifier.mangled-identifier')"
       variant="outlined"

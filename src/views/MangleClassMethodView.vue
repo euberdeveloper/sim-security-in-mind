@@ -50,7 +50,7 @@ updateRouteQuery();
       :rules="[mangledValidationRule]"
     />
     <v-text-field
-      :value="displayedMangledMethodSignature"
+      :model-value="displayedMangledMethodSignature"
       type="text"
       :label="$t('views.mangle-class-method.mangled-signature')"
       variant="outlined"
