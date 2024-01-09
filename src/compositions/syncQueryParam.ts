@@ -13,7 +13,7 @@ export function syncQueryParam<T>(
     router.replace({ query: { ...route.query, [queryParam]: serializer(variable.value) } });
   }
 
-  if (route.query[queryParam] === null) {
+  if (route.query[queryParam] !== undefined) {
     variable.value = deserializer(route.query[queryParam] as string);
   }
 
