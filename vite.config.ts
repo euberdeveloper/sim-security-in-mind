@@ -9,6 +9,26 @@ import svgLoader from 'vite-svg-loader';
 import manifest from './manifest';
 
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'manglers': [
+            './src/views/MangleClassConstructorView.vue',
+            './src/views/MangleClassIdentifierView.vue',
+            './src/views/MangleClassMethodView.vue',
+            './src/views/MangleTypeView.vue',
+          ],
+          'preferences': [
+            './src/views/PreferencesView.vue'
+          ],
+          'not-found': [
+            './src/views/NotFoundView.vue'
+          ]
+        },
+      },
+    },
+  },
   plugins: [
     VitePWA({ 
       registerType: 'autoUpdate',

@@ -5,14 +5,14 @@ import { availableLanguages } from '@/stores/language';
 import { localeGuard } from './guards/locale';
 import { infoGuard } from './guards/info';
 
-import LanguageProxy from '@/views/LanguageProxy.vue';
-import NotFoundView from '@/views/NotFoundView.vue';
+const LanguageProxy = () => import('@/views/LanguageProxy.vue');
+const NotFoundView = () => import('@/views/NotFoundView.vue');
 
-import MangleTypeView from '@/views/MangleTypeView.vue';
-import MangleClassIdentifierView from '@/views/MangleClassIdentifierView.vue';
-import MangleClassMethodView from '@/views/MangleClassMethodView.vue';
-import MangleClassConstructorView from '@/views/MangleClassConstructorView.vue';
-import PreferencesView from '@/views/PreferencesView.vue';
+const MangleTypeView = () => import('@/views/MangleTypeView.vue');
+const MangleClassIdentifierView = () => import('@/views/MangleClassIdentifierView.vue');
+const MangleClassMethodView = () => import('@/views/MangleClassMethodView.vue');
+const MangleClassConstructorView = () => import('@/views/MangleClassConstructorView.vue');
+const PreferencesView = () => import('@/views/PreferencesView.vue');
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
