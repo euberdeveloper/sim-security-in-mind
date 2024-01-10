@@ -16,6 +16,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@eubereveloper/vuemark": "^0.2.3",
     "clipboardy": "^4.0.0",
     "lifeware-java-mangler": "^1.0.16",
     "markdown-it": "^14.0.0",

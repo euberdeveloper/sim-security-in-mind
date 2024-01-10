@@ -1,11 +1,11 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
+import { VueMark } from '@eubereveloper/vuemark';
 
 import i18n from '@/plugins/i18n';
 
 import vuetify from '@/plugins/vuetify';
 import { useAnalytics } from '@/plugins/analytics';
-import { vMarkdown } from '@/directives/VMarkdown';
 
 import App from './App.vue';
 import router from './router';
@@ -20,6 +20,6 @@ if (config.gtag.enabled) {
   useAnalytics(app, router);
 }
 app.use(vuetify);
-app.directive('markdown', vMarkdown);
+app.use(VueMark);
 
 app.mount('#app');

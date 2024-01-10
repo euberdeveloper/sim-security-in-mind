@@ -21,7 +21,7 @@ const dialogWidth = computed(() => (isMobile.value ? 'auto' : 650));
     :fullscreen="isMobile"
     v-model="showInfoDialog"
   >
-    <div v-markdown="infoText" class="markdown-container"></div>
+    <div v-mark="infoText" class="markdown-container"></div>
   </CardDialog>
 </template>
 
