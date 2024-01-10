@@ -19,6 +19,7 @@
     "@eubereveloper/vuemark": "^0.2.3",
     "clipboardy": "^4.0.0",
     "lifeware-java-mangler": "^1.0.16",
+    "markdown-it": "^14.0.0",
     "pinia": "^2.1.7",
     "vue": "^3.3.11",
     "vue-gtag": "^2.0.1",
