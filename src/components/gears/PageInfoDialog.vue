@@ -16,7 +16,7 @@ const dialogWidth = computed(() => (isMobile.value ? 'auto' : 650));
 
 <template>
   <CardDialog
-    title="Page information"
+    :title="$t('notifications.dialogs.page-info.title')"
     :width="dialogWidth"
     :fullscreen="isMobile"
     v-model="showInfoDialog"
