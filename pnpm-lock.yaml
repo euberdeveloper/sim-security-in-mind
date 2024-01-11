@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@eubereveloper/vuemark':
-    specifier: ^0.2.7
-    version: 0.2.7(@types/markdown-it@13.0.7)(markdown-it@14.0.0)(vue@3.4.8)
+    specifier: ^0.2.8
+    version: 0.2.8(@types/markdown-it@13.0.7)(markdown-it@14.0.0)(vue@3.4.8)
   clipboardy:
     specifier: ^4.0.0
     version: 4.0.0
@@ -1576,8 +1576,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@eubereveloper/vuemark@0.2.7(@types/markdown-it@13.0.7)(markdown-it@14.0.0)(vue@3.4.8):
-    resolution: {integrity: sha512-QyrILCp9ei5Wrspab1+/SEiQes14R6h1t+jeV26N64YY8TEKanzEvEAtHsvdTNADEPXjGcBfnw7ITmk0pX43Ew==}
+  /@eubereveloper/vuemark@0.2.8(@types/markdown-it@13.0.7)(markdown-it@14.0.0)(vue@3.4.8):
+    resolution: {integrity: sha512-U/J5x5KRMxAbWm9jYdllRag/mN576pNaBnCdhZ6JHuuQXXHMbo2i2WqbisSX3hZHeucB6an+LqKRM6SZqpxQcQ==}
     peerDependencies:
       '@types/markdown-it': ^13.0.7
       markdown-it: ^14.0.0
