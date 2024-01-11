@@ -6,17 +6,14 @@ settings:
 
 dependencies:
   '@eubereveloper/vuemark':
-    specifier: ^0.2.8
-    version: 0.2.8(@types/markdown-it@13.0.7)(markdown-it@14.0.0)(vue@3.4.8)
+    specifier: ^0.2.9
+    version: 0.2.9(@types/markdown-it@13.0.7)(markdown-it@14.0.0)(vue@3.4.8)
   clipboardy:
     specifier: ^4.0.0
     version: 4.0.0
   lifeware-java-mangler:
     specifier: ^1.0.16
     version: 1.0.16
-  markdown-it:
-    specifier: ^14.0.0
-    version: 14.0.0
   pinia:
     specifier: ^2.1.7
     version: 2.1.7(typescript@5.3.3)(vue@3.4.8)
@@ -1576,8 +1573,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@eubereveloper/vuemark@0.2.8(@types/markdown-it@13.0.7)(markdown-it@14.0.0)(vue@3.4.8):
-    resolution: {integrity: sha512-U/J5x5KRMxAbWm9jYdllRag/mN576pNaBnCdhZ6JHuuQXXHMbo2i2WqbisSX3hZHeucB6an+LqKRM6SZqpxQcQ==}
+  /@eubereveloper/vuemark@0.2.9(@types/markdown-it@13.0.7)(markdown-it@14.0.0)(vue@3.4.8):
+    resolution: {integrity: sha512-LgCmFVPILk3oFHF/TxmhkXoIPD96sms0F551l+JAOx2NujsDOQp2wehr1TH9VF1OScWqav1ikxLOgLgYq5bXyw==}
     peerDependencies:
       '@types/markdown-it': ^13.0.7
       markdown-it: ^14.0.0
