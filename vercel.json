@@ -1,6 +1,10 @@
 {
     "rewrites": [
         {
+            "source": "/(.*)/exclude.txt",
+            "destination": "/$1/exclude.txt"
+        },
+        {
             "source": "/:path*",
             "destination": "/index.html"
         }

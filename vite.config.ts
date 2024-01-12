@@ -36,10 +36,10 @@ export default defineConfig({
       workbox: {
         runtimeCaching: [
           {
-            urlPattern: new RegExp('https://lifeware-java-mangler.euber.dev/assets/'),
+            urlPattern: new RegExp('https://lifeware-java-mangler.euber.dev/assets/(?!exclude.txt)'),
             handler: 'CacheFirst',
             options: {
-              cacheName: 'assets'
+              cacheName: 'assets',
             }
           }
         ]
