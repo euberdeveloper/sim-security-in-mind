@@ -4,7 +4,7 @@ import config from '@/config';
 
 export type NetworkStatus = 'online' | 'offline' | 'unknown';
 
-export function useNetworkStatus(pingUrl = config.networkMonitoring.uncachedUrl, milliseconds = 5000) {
+export function useNetworkStatus(pingUrl = config.networkMonitoring.uncachedUrl, milliseconds = config.networkMonitoring.interval) {
   const networkStatus = ref<NetworkStatus>('unknown');
   let detectionInProgress = false;
 
