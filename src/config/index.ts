@@ -9,7 +9,7 @@ export default {
     defaultLocale: import.meta.env.VITE_I18N_DEFAULT_LOCALE,
     fallbackLocale: import.meta.env.VITE_I18N_FALLBACK_LOCALE
   },
-  website: {
-    url: import.meta.env.VITE_WEBSITE_URL ?? '/'
+  networkMonitoring: {
+    uncachedUrl: import.meta.env.VITE_NETWORK_MONITORING_UNCACHED_URL ?? '/'
   }
 };
