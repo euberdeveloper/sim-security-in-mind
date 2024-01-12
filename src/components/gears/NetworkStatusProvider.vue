@@ -13,7 +13,6 @@ const { notify } = notificationsStore;
 const { networkStatus } = useNetworkStatus();
 
 watch(networkStatus, (current, previous) => {
-  console.log('status', networkStatus.value)
   switch (current) {
     case 'offline':
       notify(t('notifications.networkStatus.messages.error'), true);
