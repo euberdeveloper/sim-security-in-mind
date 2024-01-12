@@ -43,6 +43,7 @@
       "darkMode": "Notturna",
       "primaryColor": "Colore primario",
       "routeTransition": "Transizione schermata",
+      "networkStatus": "Stato connessione",
       "pageInfo": "Info pagina",
       "language": "Lingua"
     },
@@ -61,6 +62,17 @@
     "clipboard": {
       "success": "Testo copiato negli appunti",
       "error": "Testo non copiato negli appunti"
+    },
+    "networkStatus": {
+      "status": {
+        "online": "Online",
+        "offline": "Offline",
+        "unknown": "In verifica"
+      },
+      "messages": {
+        "success": "Connesso alla rete",
+        "error": "Nessuna connessione"
+      }
     },
     "dialogs": {
       "page-info": {

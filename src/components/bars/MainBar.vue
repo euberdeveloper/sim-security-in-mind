@@ -6,18 +6,21 @@ import { storeToRefs } from 'pinia';
 import { useMenuStore } from '@/stores/menu';
 import { useThemeStore } from '@/stores/theme';
 
+import NetworkStatusProvider from '@/components/gears/NetworkStatusProvider.vue';
+
 import DarkModeAction from './actions/DarkModeAction.vue';
 import ThemePrimaryColorAction from './actions/ThemePrimaryColorAction.vue';
 import TransitionAction from './actions/TransitionAction.vue';
 import InfoAction from './actions/InfoAction.vue';
 import OptionsAction from './actions/OptionsAction.vue';
 import LanguageAction from './actions/LanguageAction.vue';
+import NetworkStatusAction from './actions/NetworkStatusAction.vue';
 
 const menuStore = useMenuStore();
 const { toggleMenu } = menuStore;
 
 const themeStore = useThemeStore();
-const { showDarkMode, showPrimaryColor, showRouteTransition, showPageInfo, showLanguage } =
+const { showDarkMode, showPrimaryColor, showRouteTransition, showNetwork, showPageInfo, showLanguage } =
   storeToRefs(themeStore);
 
 const display = useDisplay();
@@ -39,7 +42,12 @@ const title = computed(() => (isMobile.value ? 'LwJavaMangle' : 'Lifeware Java M
       <TransitionAction v-if="showRouteTransition" />
       <InfoAction v-if="showPageInfo" />
       <LanguageAction v-if="showLanguage" />
-      <OptionsAction />
+      <NetworkStatusProvider>
+        <template #default="{networkStatus}">
+          <NetworkStatusAction :network-status="networkStatus" v-if="showNetwork" />
+          <OptionsAction :network-status="networkStatus" />
+        </template>
+      </NetworkStatusProvider>
     </template>
   </v-app-bar>
 </template>

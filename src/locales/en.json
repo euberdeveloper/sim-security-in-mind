@@ -43,6 +43,7 @@
       "darkMode": "Dark Mode",
       "primaryColor": "Primary Color",
       "routeTransition": "Route Transition",
+      "networkStatus": "Network status",
       "pageInfo": "Page Info",
       "language": "Language"
     },
@@ -61,6 +62,17 @@
     "clipboard": {
       "success": "Text copied to clipboard",
       "error": "Failed to copy to clipboard"
+    },
+    "networkStatus": {
+      "status": {
+        "online": "Online",
+        "offline": "Offline",
+        "unknown": "Connecting"
+      },
+      "messages": {
+        "success": "The app is online",
+        "error": "The app is offline"
+      }
     },
     "dialogs": {
       "page-info": {

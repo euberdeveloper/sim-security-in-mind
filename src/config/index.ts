@@ -8,5 +8,8 @@ export default {
   i18n: {
     defaultLocale: import.meta.env.VITE_I18N_DEFAULT_LOCALE,
     fallbackLocale: import.meta.env.VITE_I18N_FALLBACK_LOCALE
+  },
+  website: {
+    url: import.meta.env.VITE_WEBSITE_URL ?? '/'
   }
 };

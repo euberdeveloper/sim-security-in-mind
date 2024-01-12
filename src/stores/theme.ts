@@ -133,13 +133,14 @@ export const useThemeStore = defineStore('theme', () => {
     darkMode: computed(() => i18n.t('preferences.barButtons.darkMode')) as any,
     primaryColor: computed(() => i18n.t('preferences.barButtons.primaryColor')) as any,
     routeTransition: computed(() => i18n.t('preferences.barButtons.routeTransition')) as any,
+    networkStatus: computed(() => i18n.t('preferences.barButtons.networkStatus')) as any,
     pageInfo: computed(() => i18n.t('preferences.barButtons.pageInfo')) as any,
-    language: computed(() => i18n.t('preferences.barButtons.language')) as any
+    language: computed(() => i18n.t('preferences.barButtons.language')) as any,
   });
   const defaultShownBarButtons = () =>
     display.mobile.value
       ? ['darkMode', 'pageInfo', 'language']
-      : ['darkMode', 'primaryColor', 'routeTransition', 'pageInfo', 'language'];
+      : ['darkMode', 'primaryColor', 'routeTransition', 'networkStatus', 'pageInfo', 'language'];
   const shownBarButtons = ref<string[]>(defaultShownBarButtons());
   function resetShownBarButtons() {
     shownBarButtons.value = defaultShownBarButtons();
@@ -147,6 +148,7 @@ export const useThemeStore = defineStore('theme', () => {
   const showDarkMode = computed(() => shownBarButtons.value.includes('darkMode'));
   const showPrimaryColor = computed(() => shownBarButtons.value.includes('primaryColor'));
   const showRouteTransition = computed(() => shownBarButtons.value.includes('routeTransition'));
+  const showNetwork = computed(() => shownBarButtons.value.includes('networkStatus'));
   const showPageInfo = computed(() => shownBarButtons.value.includes('pageInfo'));
   const showLanguage = computed(() => shownBarButtons.value.includes('language'));
   const barButtonsComponents = {
@@ -156,6 +158,7 @@ export const useThemeStore = defineStore('theme', () => {
     showDarkMode,
     showPrimaryColor,
     showRouteTransition,
+    showNetwork,
     showPageInfo,
     showLanguage
   };
