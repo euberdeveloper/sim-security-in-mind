@@ -4,13 +4,10 @@ import { useHead, type Meta } from '@unhead/vue'
 
 import { purgeTitle } from '@/compositions/pageTitle';
 
-function handleTitle(rawTitle: string, metas: Meta[]) {
+function handleTitle(rawTitle: string) {
   const { t } = i18n.global;
   const {text: purgedTitle} = purgeTitle(rawTitle);
   const title =  purgedTitle ? (t as any)(`routes.titles.${purgedTitle}`) : undefined;
-  if (title) {
-    metas.push({ property: 'og:title', content: title });
-  }
   return title;
 }
 
@@ -19,7 +16,6 @@ function handleDescription(rawDescription: string | undefined, metas: Meta[]) {
   const description = rawDescription ? (t as any)(`routes.descriptions.${rawDescription}`) : undefined;
   if (description) {
     metas.push({ name: 'description', content: description });
-    metas.push({ property: 'og:description', content: description });
   }
 }
 
@@ -39,7 +35,7 @@ export const headGuard: NavigationGuard = (to) => {
   const metas: Meta[] = [];
 
   const { title: rawTitle, description: rawDescription } = to.meta;
-  const title = handleTitle(rawTitle, metas);
+  const title = handleTitle(rawTitle);
   handleDescription(rawDescription, metas);
   const lang = handleLang(to.params.locale);
 
