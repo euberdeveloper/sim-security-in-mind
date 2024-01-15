@@ -7,7 +7,8 @@ export {}
 
 declare module 'vue-router' {
   interface RouteMeta {
-    title: TitleDescriptor | string;
+    title?: TitleDescriptor | string;
+    description?: string;
     info?: MarkdownKey;
   }
 }

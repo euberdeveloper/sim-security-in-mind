@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useHead } from '@unhead/vue'
+
+import {titleTemplate} from '@/plugins/unhead';
+
 import { syncThemeStoreWithLocalStorage } from '@/stores/theme';
 import { syncLanguage } from '@/stores/language';
 
@@ -11,6 +15,10 @@ import config from '@/config';
 
 syncThemeStoreWithLocalStorage(`${config.localStoragePrefix}_theme`);
 syncLanguage();
+
+useHead({
+  titleTemplate
+});
 </script>
 
 <template>

@@ -4,6 +4,7 @@ import { availableLanguages } from '@/stores/language';
 
 import { localeGuard } from './guards/locale';
 import { infoGuard } from './guards/info';
+import { headGuard } from './guards/head';
 
 const LanguageProxy = () => import('@/views/LanguageProxy.vue');
 const NotFoundView = () => import('@/views/NotFoundView.vue');
@@ -21,11 +22,17 @@ const router = createRouter({
       path: `/:locale(${availableLanguages.join('|')})?`,
       redirect: { name: 'mangle-type' },
       component: LanguageProxy,
+      meta: {
+        description: 'root',
+      },
       children: [
         {
           path: 'mangle',
           name: 'mangle',
           redirect: { name: 'mangle-type' },
+          meta: {
+            description: 'mangle',
+          },
           children: [
             {
               path: 'mangle-type',
@@ -65,13 +72,13 @@ const router = createRouter({
             }
           ]
         },
-
         {
           path: 'preferences',
           name: 'preferences',
           component: PreferencesView,
           meta: {
             title: 'preferences',
+            description: 'preferences',
             info: 'preferences'
           }
         },
@@ -94,6 +101,7 @@ const router = createRouter({
 });
 
 router.beforeEach(localeGuard);
+router.beforeEach(headGuard);
 router.beforeEach(infoGuard);
 
 export default router;

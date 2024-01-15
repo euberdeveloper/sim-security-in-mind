@@ -1,11 +1,19 @@
 {
   "routes": {
-    "mangle-type": "Type",
-    "mangle-class-identifier": "Class Identifier",
-    "mangle-class-method": "Method",
-    "mangle-class-constructor": "Constructor",
-    "preferences": "Preferences",
-    "not-found": "Not found"
+    "titles": {
+      "mangle-type": "Type",
+      "mangle-class-identifier": "Class Identifier",
+      "mangle-class-method": "Method",
+      "mangle-class-constructor": "Constructor",
+      "preferences": "Preferences",
+      "not-found": "Not found"
+    },
+    "descriptions": {
+      "root": "A PWA used by Lifeware to mangle Java code into the Smalltalk RPC code",
+      "mangle": "This page allows you to mangle Java code into the Smalltalk RPC code",
+      "preferences": "This page allows you to change the preferences of the PWA"
+    }
+    
   },
   "menu": {
     "search": "Search",

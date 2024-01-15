@@ -6,7 +6,9 @@ import locales from '@/locales';
 import { useLanguageStore } from '@/stores/language';
 import config from '@/config';
 
-function i18n() {
+export let i18n: ReturnType<typeof createI18n>;
+
+function setupI18n() {
   const languageStore = useLanguageStore();
   const { supportedLanguages, language } = storeToRefs(languageStore);
 
@@ -15,12 +17,14 @@ function i18n() {
     return acc;
   }, {});
 
-  return createI18n({
+  i18n = createI18n({
     legacy: false,
     locale: language.value,
     fallbackLocale: config.i18n.fallbackLocale,
     messages
   });
+
+  return i18n;
 }
 
-export default i18n;
+export default setupI18n;
