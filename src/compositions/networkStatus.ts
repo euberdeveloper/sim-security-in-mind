@@ -17,7 +17,8 @@ export function useNetworkStatus(
         detectionInProgress = true;
         const answer = await fetch(pingUrl, {
           cache: 'no-store',
-          redirect: 'manual'
+          redirect: 'manual',
+          method: 'HEAD'
         });
         networkStatus.value = answer.ok ? 'online' : 'offline';
       } catch (error) {
