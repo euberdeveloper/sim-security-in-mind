@@ -4,7 +4,10 @@ import config from '@/config';
 
 export type NetworkStatus = 'online' | 'offline' | 'unknown';
 
-export function useNetworkStatus(pingUrl = config.networkMonitoring.uncachedUrl, milliseconds = config.networkMonitoring.interval) {
+export function useNetworkStatus(
+  pingUrl = config.networkMonitoring.uncachedUrl,
+  milliseconds = config.networkMonitoring.interval
+) {
   const networkStatus = ref<NetworkStatus>('unknown');
   let detectionInProgress = false;
 
@@ -17,11 +20,9 @@ export function useNetworkStatus(pingUrl = config.networkMonitoring.uncachedUrl,
           redirect: 'manual'
         });
         networkStatus.value = answer.ok ? 'online' : 'offline';
-      }
-      catch (error) {
+      } catch (error) {
         networkStatus.value = 'offline';
-      }
-      finally {
+      } finally {
         detectionInProgress = false;
       }
     }
@@ -38,4 +39,3 @@ export function useNetworkStatus(pingUrl = config.networkMonitoring.uncachedUrl,
 
   return { networkStatus };
 }
-

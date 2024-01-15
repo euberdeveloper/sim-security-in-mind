@@ -6,8 +6,7 @@ export const localeGuard: NavigationGuard = (to) => {
 
   if (to.params.locale) {
     languageStore.language = to.params.locale as SupportedLanguage;
-  }
-  else {
+  } else {
     return { ...to, params: { ...to.params, locale: languageStore.language } };
   }
 };

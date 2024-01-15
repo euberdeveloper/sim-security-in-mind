@@ -20,8 +20,14 @@ const menuStore = useMenuStore();
 const { toggleMenu } = menuStore;
 
 const themeStore = useThemeStore();
-const { showDarkMode, showPrimaryColor, showRouteTransition, showNetwork, showPageInfo, showLanguage } =
-  storeToRefs(themeStore);
+const {
+  showDarkMode,
+  showPrimaryColor,
+  showRouteTransition,
+  showNetwork,
+  showPageInfo,
+  showLanguage
+} = storeToRefs(themeStore);
 
 const display = useDisplay();
 const isMobile = computed(() => display.smAndDown.value);
@@ -43,7 +49,7 @@ const title = computed(() => (isMobile.value ? 'LwJavaMangle' : 'Lifeware Java M
       <InfoAction v-if="showPageInfo" />
       <LanguageAction v-if="showLanguage" />
       <NetworkStatusProvider>
-        <template #default="{networkStatus}">
+        <template #default="{ networkStatus }">
           <NetworkStatusAction :network-status="networkStatus" v-if="showNetwork" />
           <OptionsAction :network-status="networkStatus" />
         </template>

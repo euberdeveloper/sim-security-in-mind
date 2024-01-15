@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useHead } from '@unhead/vue'
+import { useHead } from '@unhead/vue';
 
-import {titleTemplate} from '@/plugins/unhead';
+import { titleTemplate } from '@/plugins/unhead';
 
 import { syncThemeStoreWithLocalStorage } from '@/stores/theme';
 import { syncLanguage } from '@/stores/language';

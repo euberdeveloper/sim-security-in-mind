@@ -13,7 +13,6 @@
       "mangle": "This page allows you to mangle Java code into the Smalltalk RPC code",
       "preferences": "This page allows you to change the preferences of the PWA"
     }
-    
   },
   "menu": {
     "search": "Search",

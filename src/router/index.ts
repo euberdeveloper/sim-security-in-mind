@@ -23,7 +23,7 @@ const router = createRouter({
       redirect: { name: 'mangle-type' },
       component: LanguageProxy,
       meta: {
-        description: 'root',
+        description: 'root'
       },
       children: [
         {
@@ -31,7 +31,7 @@ const router = createRouter({
           name: 'mangle',
           redirect: { name: 'mangle-type' },
           meta: {
-            description: 'mangle',
+            description: 'mangle'
           },
           children: [
             {

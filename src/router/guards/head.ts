@@ -1,19 +1,21 @@
 import { type NavigationGuard } from 'vue-router';
 import { i18n } from '@/plugins/i18n';
-import { useHead, type Meta } from '@unhead/vue'
+import { useHead, type Meta } from '@unhead/vue';
 
 import { purgeTitle } from '@/compositions/pageTitle';
 
 function handleTitle(rawTitle: string) {
   const { t } = i18n.global;
-  const {text: purgedTitle} = purgeTitle(rawTitle);
-  const title =  purgedTitle ? (t as any)(`routes.titles.${purgedTitle}`) : undefined;
+  const { text: purgedTitle } = purgeTitle(rawTitle);
+  const title = purgedTitle ? (t as any)(`routes.titles.${purgedTitle}`) : undefined;
   return title;
 }
 
 function handleDescription(rawDescription: string | undefined, metas: Meta[]) {
   const { t } = i18n.global;
-  const description = rawDescription ? (t as any)(`routes.descriptions.${rawDescription}`) : undefined;
+  const description = rawDescription
+    ? (t as any)(`routes.descriptions.${rawDescription}`)
+    : undefined;
   if (description) {
     metas.push({ name: 'description', content: description });
   }
@@ -25,7 +27,10 @@ function handleLang(localeParam: string | string[] | undefined) {
     return undefined;
   }
   if (Array.isArray(localeParam)) {
-    console.warn('[head guard] Multiple locale params provided to route. Using the first element.', localeParam);
+    console.warn(
+      '[head guard] Multiple locale params provided to route. Using the first element.',
+      localeParam
+    );
     return localeParam[0];
   }
   return localeParam;

@@ -135,7 +135,7 @@ export const useThemeStore = defineStore('theme', () => {
     routeTransition: computed(() => i18n.t('preferences.barButtons.routeTransition')) as any,
     networkStatus: computed(() => i18n.t('preferences.barButtons.networkStatus')) as any,
     pageInfo: computed(() => i18n.t('preferences.barButtons.pageInfo')) as any,
-    language: computed(() => i18n.t('preferences.barButtons.language')) as any,
+    language: computed(() => i18n.t('preferences.barButtons.language')) as any
   });
   const defaultShownBarButtons = () =>
     display.mobile.value

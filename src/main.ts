@@ -4,7 +4,7 @@ import '@/plugins/pwa';
 import { VueMark } from '@eubereveloper/vuemark';
 
 import i18n from '@/plugins/i18n';
-import {useUnhead} from '@/plugins/unhead';
+import { useUnhead } from '@/plugins/unhead';
 import vuetify from '@/plugins/vuetify';
 import { useAnalytics } from '@/plugins/analytics';
 
