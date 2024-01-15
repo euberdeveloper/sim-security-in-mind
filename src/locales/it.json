@@ -1,11 +1,18 @@
 {
   "routes": {
-    "mangle-type": "Tipo",
-    "mangle-class-identifier": "Identificatore classe",
-    "mangle-class-method": "Metodo",
-    "mangle-class-constructor": "Costruttore",
-    "preferences": "Preferenze",
-    "not-found": "Pagina non trovata"
+    "titles": {
+      "mangle-type": "Tipo",
+      "mangle-class-identifier": "Identificatore classe",
+      "mangle-class-method": "Metodo",
+      "mangle-class-constructor": "Costruttore",
+      "preferences": "Preferenze",
+      "not-found": "Pagina non trovata"
+    },
+    "descriptions": {
+      "root": "Una PWA usata da Lifeware per tradurre del codice Java nel rispettivo codice RPC per Smalltalk",
+      "mangle": "Questa pagina ti permette di tradurre del codice Java nel rispettivo codice RPC per Smalltalk",
+      "preferences": "Questa pagina ti permette di cambiare le preferenze della PWA"
+    }
   },
   "menu": {
     "search": "Cerca",

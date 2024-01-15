@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
+import { createHead } from '@unhead/vue'
 import { VueMark } from '@eubereveloper/vuemark';
 
 import i18n from '@/plugins/i18n';
@@ -15,6 +16,7 @@ const app = createApp(App);
 
 app.use(createPinia());
 app.use(i18n());
+app.use(createHead());
 app.use(router);
 if (config.gtag.enabled) {
   useAnalytics(app, router);

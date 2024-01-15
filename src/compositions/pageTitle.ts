@@ -8,7 +8,11 @@ export interface TitleDescriptor {
   bold?: boolean;
 }
 
-export function purgeTitle(title: string | TitleDescriptor): Required<TitleDescriptor> {
+export function purgeTitle(title: string | TitleDescriptor | undefined): Required<TitleDescriptor> {
+  if (title === undefined) {
+    title = '';
+  }
+
   if (typeof title === 'string') {
     title = { text: title };
   }

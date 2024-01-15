@@ -15,7 +15,7 @@ const { routeTransition } = storeToRefs(useThemeStore());
 
 const { t } = useI18n();
 const titleText = computed(() => {
-  return t(`routes.${props.title.text}`) ?? '';
+  return t(`routes.titles.${props.title.text}`) ?? '';
 });
 const titleAlign = computed(() => {
   return `text-${props.title.position}`;
