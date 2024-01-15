@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
+import '@/plugins/pwa';
 import { VueMark } from '@eubereveloper/vuemark';
 
 import i18n from '@/plugins/i18n';

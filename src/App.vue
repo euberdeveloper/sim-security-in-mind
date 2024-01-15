@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useRegisterSW } from 'virtual:pwa-register/vue';
 import { useHead } from '@unhead/vue'
 
 import {titleTemplate} from '@/plugins/unhead';
@@ -13,10 +12,6 @@ import SnackbarNotifications from '@/components/gears/SnackbarNotifications.vue'
 import PageInfoDialog from '@/components/gears/PageInfoDialog.vue';
 
 import config from '@/config';
-
-useRegisterSW({
-  immediate: true
-})
 
 syncThemeStoreWithLocalStorage(`${config.localStoragePrefix}_theme`);
 syncLanguage();
