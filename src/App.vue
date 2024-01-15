@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
 
+import {titleTemplate} from '@/plugins/unhead';
+
 import { syncThemeStoreWithLocalStorage } from '@/stores/theme';
 import { syncLanguage } from '@/stores/language';
 
@@ -15,7 +17,7 @@ syncThemeStoreWithLocalStorage(`${config.localStoragePrefix}_theme`);
 syncLanguage();
 
 useHead({
-  titleTemplate: title => title ? `${title} | LwJavaMangler` :'LwJavaMangler',
+  titleTemplate
 });
 </script>
 

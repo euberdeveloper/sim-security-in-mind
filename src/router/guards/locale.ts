@@ -1,11 +1,13 @@
 import { type NavigationGuard } from 'vue-router';
-import { useLanguageStore } from '@/stores/language';
+import { useLanguageStore, type SupportedLanguage } from '@/stores/language';
 
-export const localeGuard: NavigationGuard = (to, _from, next) => {
+export const localeGuard: NavigationGuard = (to) => {
   const languageStore = useLanguageStore();
 
   if (to.params.locale) {
-    return next();
+    languageStore.language = to.params.locale as SupportedLanguage;
   }
-  return next({ ...to, params: { ...to.params, locale: languageStore.language } });
+  else {
+    return { ...to, params: { ...to.params, locale: languageStore.language } };
+  }
 };
