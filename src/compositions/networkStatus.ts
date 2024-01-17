@@ -29,12 +29,19 @@ export function useNetworkStatus(
     }
   }
 
+  const onlineListener = () => handleConnection();
+  const offlineListener = () => networkStatus.value = 'offline';
+
   let interval: undefined | NodeJS.Timeout = undefined;
   onMounted(() => {
     handleConnection();
+    window.addEventListener('online', onlineListener);
+    window.addEventListener('offline', offlineListener);
     interval = setInterval(handleConnection, milliseconds);
   });
   onUnmounted(() => {
+    window.removeEventListener('online', onlineListener);
+    window.removeEventListener('offline', offlineListener);
     clearInterval(interval);
   });
 
