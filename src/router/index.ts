@@ -23,23 +23,13 @@ const router = createRouter({
       },
       children: [
         {
-          path: 'mangle',
-          name: 'mangle',
-          redirect: { name: 'devices' },
+          path: 'devices',
+          name: 'devices',
+          component: DevicesView,
           meta: {
-            description: 'mangle'
-          },
-          children: [
-            {
-              path: 'devices',
-              name: 'devices',
-              component: DevicesView,
-              meta: {
-                title: 'devices',
-                info: 'devices'
-              }
-            }
-          ]
+            title: 'devices',
+            info: 'devices'
+          }
         },
         {
           path: 'preferences',
