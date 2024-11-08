@@ -85,24 +85,15 @@
     }
   },
   "views": {
-    "mangle-type": {
-      "type": "Tipo",
-      "mangled-type": "Tipo tradotto"
-    },
-    "mangle-class-constructor": {
-      "class-constructor": "Costruttore",
-      "mangled-signature": "Firma",
-      "mangled-definition": "Definizione"
-    },
-    "mangle-class-method": {
-      "class-method": "Metodo",
-      "mangled-signature": "Firma",
-      "mangled-definition": "Definizione"
-    },
-    "mangle-class-identifier": {
-      "class-identifier": "Identificatore classe",
-      "mangled-identifier": "Identificatore",
-      "mangled-definition": "Definizione"
+    "devices": {
+      "title": "Dispositivi",
+      "search": "Cerca",
+      "columns": {
+        "mac-address": "Indirizzo MAC",
+        "private-ip": "IP privato",
+        "model-name": "Modello",
+        "actions": "Azioni"
+      }
     },
     "not-found": {
       "text": "La pagina {path} non è stata trovata",
