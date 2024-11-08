@@ -48,12 +48,12 @@ const title = computed(() => (isMobile.value ? 'SIM' : 'SIM - Security in Mind')
       <TransitionAction v-if="showRouteTransition" />
       <InfoAction v-if="showPageInfo" />
       <LanguageAction v-if="showLanguage" />
-      <!-- <NetworkStatusProvider>
+      <NetworkStatusProvider>
         <template #default="{ networkStatus }">
           <NetworkStatusAction :network-status="networkStatus" v-if="showNetwork" />
           <OptionsAction :network-status="networkStatus" />
         </template>
-      </NetworkStatusProvider> -->
+      </NetworkStatusProvider>
     </template>
   </v-app-bar>
 </template>

@@ -12,7 +12,7 @@ const { t, locale } = useI18n({ useScope: 'global' });
 
 const menuItems = ref<DynamicMenuItem[]>([
   {
-    icon: 'mdi-alpha-i-circle',
+    icon: 'mdi-devices',
     text: computed(() => t('menu.pages.devices')),
     path: 'devices'
   }
