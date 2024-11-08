@@ -1,10 +1,7 @@
 {
   "routes": {
     "titles": {
-      "mangle-type": "Tipo",
-      "mangle-class-identifier": "Identificatore classe",
-      "mangle-class-method": "Metodo",
-      "mangle-class-constructor": "Costruttore",
+      "devices": "Dispositivi",
       "preferences": "Preferenze",
       "not-found": "Pagina non trovata"
     },
@@ -18,10 +15,7 @@
     "search": "Cerca",
     "version": "Versione",
     "pages": {
-      "mangle-type": "Traduci tipo",
-      "mangle-class-identifier": "Traduci identificatore classe",
-      "mangle-class-method": "Traduci metodo classe",
-      "mangle-class-constructor": "Traduci costruttore classe"
+      "devices": "Dispositivi"
     }
   },
   "preferences": {

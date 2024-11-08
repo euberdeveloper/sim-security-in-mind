@@ -4,15 +4,11 @@ import { availableLanguages } from '@/stores/language';
 
 import { localeGuard } from './guards/locale';
 import { infoGuard } from './guards/info';
-import { headGuard } from './guards/head';
 
 const LanguageProxy = () => import('@/views/LanguageProxy.vue');
 const NotFoundView = () => import('@/views/NotFoundView.vue');
 
-const MangleTypeView = () => import('@/views/MangleTypeView.vue');
-const MangleClassIdentifierView = () => import('@/views/MangleClassIdentifierView.vue');
-const MangleClassMethodView = () => import('@/views/MangleClassMethodView.vue');
-const MangleClassConstructorView = () => import('@/views/MangleClassConstructorView.vue');
+const DevicesView = () => import('@/views/DevicesView.vue');
 const PreferencesView = () => import('@/views/PreferencesView.vue');
 
 const router = createRouter({
@@ -20,7 +16,7 @@ const router = createRouter({
   routes: [
     {
       path: `/:locale(${availableLanguages.join('|')})?`,
-      redirect: { name: 'mangle-type' },
+      redirect: { name: 'devices' },
       component: LanguageProxy,
       meta: {
         description: 'root'
@@ -29,45 +25,18 @@ const router = createRouter({
         {
           path: 'mangle',
           name: 'mangle',
-          redirect: { name: 'mangle-type' },
+          redirect: { name: 'devices' },
           meta: {
             description: 'mangle'
           },
           children: [
             {
-              path: 'mangle-type',
-              name: 'mangle-type',
-              component: MangleTypeView,
+              path: 'devices',
+              name: 'devices',
+              component: DevicesView,
               meta: {
-                title: 'mangle-type',
-                info: 'mangle-type'
-              }
-            },
-            {
-              path: 'mangle-class-identifier',
-              name: 'mangle-class-identifier',
-              component: MangleClassIdentifierView,
-              meta: {
-                title: 'mangle-class-identifier',
-                info: 'mangle-class-identifier'
-              }
-            },
-            {
-              path: 'mangle-class-method',
-              name: 'mangle-class-method',
-              component: MangleClassMethodView,
-              meta: {
-                title: 'mangle-class-method',
-                info: 'mangle-method'
-              }
-            },
-            {
-              path: 'mangle-class-constructor',
-              name: 'mangle-class-constructor',
-              component: MangleClassConstructorView,
-              meta: {
-                title: 'mangle-class-constructor',
-                info: 'mangle-constructor'
+                title: 'devices',
+                info: 'devices'
               }
             }
           ]
@@ -101,7 +70,6 @@ const router = createRouter({
 });
 
 router.beforeEach(localeGuard);
-router.beforeEach(headGuard);
 router.beforeEach(infoGuard);
 
 export default router;

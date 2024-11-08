@@ -31,7 +31,7 @@ const {
 
 const display = useDisplay();
 const isMobile = computed(() => display.smAndDown.value);
-const title = computed(() => (isMobile.value ? 'LwJavaMangle' : 'Lifeware Java Mangler'));
+const title = computed(() => (isMobile.value ? 'SIM' : 'SIM - Security in Mind'));
 </script>
 
 <template>
@@ -48,12 +48,12 @@ const title = computed(() => (isMobile.value ? 'LwJavaMangle' : 'Lifeware Java M
       <TransitionAction v-if="showRouteTransition" />
       <InfoAction v-if="showPageInfo" />
       <LanguageAction v-if="showLanguage" />
-      <NetworkStatusProvider>
+      <!-- <NetworkStatusProvider>
         <template #default="{ networkStatus }">
           <NetworkStatusAction :network-status="networkStatus" v-if="showNetwork" />
           <OptionsAction :network-status="networkStatus" />
         </template>
-      </NetworkStatusProvider>
+      </NetworkStatusProvider> -->
     </template>
   </v-app-bar>
 </template>
