@@ -92,7 +92,7 @@
         "mac-address": "MAC Address",
         "private-ip": "Private IP",
         "model-name": "Model",
-        "actions": "Actions"
+        "vulnerabilities": "Vulnerabilities"
       }
     },
     "not-found": {
